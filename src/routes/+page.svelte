@@ -5,11 +5,11 @@
     import Experience from '$lib/sections/Experience.svelte';
     import Education from '$lib/sections/Education.svelte';
     import Footer from '$lib/sections/Footer.svelte';
-    import { handleSectionsScroll } from '$lib/scripts/scroller';
+    import { scroller } from '$lib/scripts/SectionsScroller';
 
     import { onMount } from 'svelte'
 
-    onMount(() => handleSectionsScroll())
+    onMount(() => scroller.initialize())
 </script>
 
 <div class="sections">
