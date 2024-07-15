@@ -1,0 +1,22 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+
+    display: grid;
+    place-items: center;
+}
+
+.sections {
+    position: fixed;
+    top: 0;
+    transition: 0.5s;
+}
+
+ul, dl {
+    list-style-type: none;
+}
