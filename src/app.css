@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+:root {
+    --marker-width: 24px;
+}
 
 html, body {
     margin: 0;
@@ -9,11 +15,12 @@ section {
     height: 100vh;
     width: 100%;
 
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
 }
 
 .sections {
+    width: 100%;
     position: fixed;
     top: 0;
     transition: 0.5s;
