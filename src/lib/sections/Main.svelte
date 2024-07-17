@@ -6,7 +6,19 @@
 </script>
 <section itemscope itemtype="http://schema.org/Person">
     <HeaderQuote />
-    <Name />
-    <Navigation />
-    <Contacts />
+    <main class="container">
+        <Name />
+        <Navigation />
+        <Contacts />
+    </main>
 </section>
+<style>
+    main {
+        padding-top: 103px;
+        padding-left: 46px;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
+</style>

@@ -47,10 +47,6 @@
         width: var(--marker-width);
     }
 
-    nav ul {
-        padding: 0;
-    }
-
     nav ul li a {
         text-decoration: none;
         color: black;

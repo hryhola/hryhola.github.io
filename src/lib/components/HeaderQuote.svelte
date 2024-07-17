@@ -35,8 +35,7 @@
         text-align: center;
         top: 0;
         width: 100%;
-        margin: 0;
-        padding: 0;
+        padding: 43px 0 0 0;
     }
 
     .kant-quote span {
@@ -45,7 +44,7 @@
         font-size: 17px;
         text-align: center;
         transition: 2s;
-        letter-spacing: 4.2px
+        letter-spacing: 4.2px;
     }
 
     #de[data-hover="true"] {

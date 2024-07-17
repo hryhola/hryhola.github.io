@@ -7,7 +7,7 @@
     #contacts {
         display: grid;
         grid-template-rows: 0fr;
-        transition: grid-template-rows 0.5s ease-out;
+        transition: 0.5s ease-out;
 
         font-family: "Fira Sans", sans-serif;
         font-size: 18px;
@@ -21,8 +21,6 @@
 
     #contacts dt, dd {
         height: 30px;
-        margin: 0;
-        padding: 0;
         display: grid;
         align-items: center;
     }
@@ -42,6 +40,7 @@
 
     #contacts[data-is-open="true"] {
         grid-template-rows: 1fr;
+        padding-bottom: 6px;
     }
 </style>
 <div id="contacts" data-is-open={$isContactsExpanded}>
