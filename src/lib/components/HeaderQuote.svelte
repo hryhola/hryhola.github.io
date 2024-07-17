@@ -29,36 +29,47 @@
         Give me matter, I will build a world out of it!</span>
 </blockquote>
 
-<style>
+<style lang="scss">
     .kant-quote {
         position: absolute;
         text-align: center;
         top: 0;
         width: 100%;
         padding: 43px 0 0 0;
+
+        &:last-of-type {
+            pointer-events: none;
+        }
+
+        span {
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-weight: 200;
+            font-size: 17px;
+            text-align: center;
+            transition: 2s;
+            letter-spacing: 4.2px;
+        }
     }
 
-    .kant-quote span {
-        font-family: 'Fira Sans Condensed', sans-serif;
-        font-weight: 200;
-        font-size: 17px;
-        text-align: center;
-        transition: 2s;
-        letter-spacing: 4.2px;
-    }
-
-    #de[data-hover="true"] {
-        opacity: 0;
-        filter: blur(4px);
+    #de {
         user-select: none;
+
+        &[data-hover="true"] {
+            opacity: 0;
+            filter: blur(4px);
+        }
     }
 
-    #en[data-hover="false"] {
-        opacity: 0;
-        filter: blur(4px);
-    }
+    #en {
+        pointer-events: all;
 
-    #en[data-hover="true"] {
-        opacity: 1;
+        &[data-hover="false"] {
+            opacity: 0;
+            filter: blur(4px);
+        }
+
+        &[data-hover="true"] {
+            opacity: 1;
+        }
     }
 </style>
