@@ -36,6 +36,7 @@
         top: 0;
         width: 100%;
         padding: 43px 0 0 0;
+        z-index: 1;
 
         &:last-of-type {
             pointer-events: none;

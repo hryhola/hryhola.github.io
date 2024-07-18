@@ -13,6 +13,7 @@
         font-size: 86px;
         font-weight: 400;
         font-style: normal;
+        z-index: 1;
     }
 
     h2 {
@@ -20,5 +21,6 @@
         font-optical-sizing: auto;
         font-size: 26px;
         font-weight: 200;
+        z-index: 1;
     }
 </style>
