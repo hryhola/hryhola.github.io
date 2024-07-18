@@ -1,8 +1,8 @@
 <script>
-    import Contacts from "$lib/components/Contacts.svelte";
-    import HeaderQuote from "$lib/components/HeaderQuote.svelte";
-    import Name from "$lib/components/Name.svelte";
-    import Navigation from "$lib/components/Navigation.svelte";
+    import Contacts from "$lib/components/main/Contacts.svelte";
+    import HeaderQuote from "$lib/components/main/HeaderQuote.svelte";
+    import Name from "$lib/components/main/Name.svelte";
+    import Navigation from "$lib/components/main/Navigation.svelte";
 </script>
 <section itemscope itemtype="http://schema.org/Person">
     <HeaderQuote />
