@@ -6,10 +6,15 @@
     import Education from '$lib/sections/Education.svelte';
     import Footer from '$lib/sections/Footer.svelte';
     import { scroller } from '$lib/scripts/SectionsScroller';
-
     import { onMount } from 'svelte'
+    import { isContactsExpanded } from '$lib/scripts/context'
 
-    onMount(() => scroller.initialize())
+    onMount(() => {
+        $isContactsExpanded = true
+
+        scroller.initialize()
+        scroller.scrollToHash()
+    })
 </script>
 
 <div class="sections">

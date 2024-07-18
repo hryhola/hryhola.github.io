@@ -1,6 +1,17 @@
+import { isContactsExpanded } from "./context"
+
 export class SectionsScroller {
-    private readonly minSection = 0
-    private readonly maxSection = 5
+    readonly sections = [
+        'contacts',
+        'what-do-I-do',
+        'skill-set',
+        'experience',
+        'education',
+        'cv'
+    ]
+
+    readonly minSection = 0
+    readonly maxSection = this.sections.length - 1
 
     private currentSection = 0
     private isScrolling = false
@@ -16,8 +27,6 @@ export class SectionsScroller {
         })
 
         document.addEventListener('wheel', (event) => {
-            console.log(this.isScrolling)
-
             if (event.deltaY === 0 || this.isScrolling) return
     
             if (typeof this.onWheelHandlerDebounce === 'number') {
@@ -46,7 +55,14 @@ export class SectionsScroller {
         })
     }
 
-    
+    scrollToHash() {
+        const index = this.sections.indexOf(location.hash.substring(1))
+
+        if (index !== -1) {
+            this.scrollToSection(index)
+        }
+    }
+
     scrollToCurrentSection() {
         if (!this.sectionsContainer) {
             console.error('Sections container is not defined!')
@@ -58,6 +74,14 @@ export class SectionsScroller {
             console.error(`Got out of range section: ${this.currentSection}! min: ${this.minSection}, max: ${this.maxSection}`)
             
             return
+        }
+
+        const section = this.sections[this.currentSection]
+
+        if (section !== 'contacts') {
+            history.pushState({}, '', '#' + section)
+        } else {
+            history.pushState({}, document.title, window.location.pathname + window.location.search)
         }
 
         this.sectionsContainer.setAttribute('style', 'top: -' + (this.currentSection * 100) + 'vh')
