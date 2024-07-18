@@ -3,8 +3,10 @@
     <span itemprop="familyName">Hryhola</span>
 </h1>
 <h2>
-    <span itemprop="jobTitle">Software Engineer</span>.
-    <span itemprop="hasOccupation">Private entrepreneur</span>.
+    <span class="typing">
+        <span itemprop="jobTitle">Software Engineer</span>.
+        <span itemprop="hasOccupation">Private entrepreneur</span>.
+    </span>
 </h2>
 
 <style>
@@ -22,5 +24,25 @@
         font-size: 26px;
         font-weight: 200;
         z-index: 1;
+
+        display: grid;
+        grid-template-columns: min-content;
+    }
+
+    .typing {
+        overflow: hidden;
+        border-right: 0.07em solid black;
+        letter-spacing: 0.07em;
+        white-space: nowrap;
+        animation:  typing 2s steps(40, end), removeBorder 1s 2s forwards;
+    }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100%; }
+    }
+
+    @keyframes removeBorder {
+        to { border-color: transparent; }
     }
 </style>
