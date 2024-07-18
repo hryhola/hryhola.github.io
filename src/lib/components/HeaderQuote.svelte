@@ -45,7 +45,7 @@
         span {
             font-family: 'Fira Sans Condensed', sans-serif;
             font-weight: 200;
-            font-size: 17px;
+            font-size: 12px;
             text-align: center;
             transition: 2s;
             letter-spacing: 4.2px;

@@ -12,7 +12,7 @@
 <style>
     h1 {
         font-family: "Gloock", serif;
-        font-size: 86px;
+        font-size: 76px;
         font-weight: 400;
         font-style: normal;
         z-index: 1;
@@ -21,7 +21,7 @@
     h2 {
         font-family: "Fira Code", monospace;
         font-optical-sizing: auto;
-        font-size: 26px;
+        font-size: 18px;
         font-weight: 200;
         z-index: 1;
 
