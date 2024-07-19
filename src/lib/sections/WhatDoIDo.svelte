@@ -2,8 +2,8 @@
     import Title from "$lib/components/what-do-I-do/Title.svelte"
     import { isLightBulbHover  } from "$lib/scripts/context";
 
-    // const letBeLight = () => isLightBulbHover.set(true)
-    // const letBeDark = () => isLightBulbHover.set(false)
+    const letBeLight = () => isLightBulbHover.set(true)
+    const letBeDark = () => isLightBulbHover.set(false)
 </script>
 <section id="what-do-I-do">
     <div class="container">
@@ -11,13 +11,12 @@
             <img src="pictures/Dude_Standing.png" alt="Dude" />
         </div>
 
-        <article>
-            <h3>
+        <article data-is-light={$isLightBulbHover}>
+            <h3 on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
                 <Title text="Solve problems" />
                 <span class="light-rays-wrapper" >
                     <span class="light-rays">
                         <img
-                            height="60"
                             src="pictures/light_bulb.png"
                             alt="light bulb"
                         />
@@ -25,22 +24,27 @@
                 </span>
             </h3>
 
-            <p>That’s job of an <strong>engineer</strong>.</p>
-            <p>I seek for issues that should be <strong>fixed</strong>.</p>
-            <p>
-                Fixed using: languages - formal and human, frameworks, platforms
-                and most importantly <strong>analytical thinking</strong>.
-            </p>
-            <p>Fixed to improve the world I live in.</p>
+            <div class="article-text">
+                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
+                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
+                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
+                    Fixed using: languages - formal and human, frameworks, platforms
+                    and most importantly <strong>analytical thinking</strong>.
+                </p>
+                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>Fixed to improve the world I live in.</p>
+            </div>
         </article>
     </div>
 </section>
 
 <style lang="scss">
+    @import '../variables.scss';
+
     #what-do-I-do {
         background: black;
         color: white;
         font-family: 'Fira Code', monospace;
+        overflow: hidden;
 
         .container {
             display: flex;
@@ -49,6 +53,8 @@
     
         .dude-wrapper {
             overflow: hidden;
+            width: 50%;
+
             img {
                 position: relative;
                 z-index: 2;
@@ -57,23 +63,25 @@
         }
 
         article {
-            min-height: 550px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             width: 50%;
-            padding: 70px;
+            height: 100vh;
+            padding: 5% 0 5% 5%;
 
-            &:hover .light-rays{
+            &[data-is-light="true"] .light-rays{
                 width: 1800px;
                 height: 1800px;
-                transform: translate(-48%, -48%);
-
                 img {
                     filter: saturate(0) contrast(2)
                 }
             }
 
+            .article-text {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                overflow: auto;
+            }
         }
 
         h3 {
@@ -87,10 +95,12 @@
             justify-content: center;
             align-items: center;
 
+            pointer-events: none;
+
             width: 0px;
             height: 0px;
-        
-            transform: translate(-48%, -48%);
+
+            transform: translate(calc(-50% + 3vw), calc(-50% + 2.5vw));
         
             background: radial-gradient(
                     circle,
@@ -100,9 +110,22 @@
 
             transition: 1s;
 
+            @media screen and (max-width: $width-tablet) {
+                transform: translate(calc(-50% + 6vw), calc(-50% + 2.5vw));
+            }
+
+            @media screen and (max-width: $width-phone) {
+                transform: translate(calc(-50% + 6vw), calc(-50% + 5vw));
+            }
+
             img {
+                height: 60px;
                 filter: invert(1) saturate(0);
                 user-select: none;
+
+                max-height: 10vw;
+                /* @media screen and (max-width: $width-tablet) {
+                } */
             }
 
             &-wrapper {
@@ -127,6 +150,23 @@
         
             &:nth-of-type(4) {
                 text-shadow: -18px 14px 16px black;
+            }
+        }
+
+        @media screen and (max-width: $width-tablet) {
+            .dude-wrapper {
+                display: none;
+            }
+
+            article {
+                width: 100%;
+                padding: 15%;
+            }
+        }
+
+        @media screen and (max-width: $width-tablet) {
+            .article-text {
+                padding: 20% 0;
             }
         }
     }
