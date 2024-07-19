@@ -101,6 +101,14 @@
             height: 0px;
 
             transform: translate(calc(-50% + 3vw), calc(-50% + 2.5vw));
+            
+            @media screen and (max-width: $width-tablet) {
+                transform: translate(calc(-50% + 6vw), calc(-50% + 2.5vw));
+            }
+
+            @media screen and (max-width: $width-phone) {
+                transform: translate(calc(-50% + 6vw), calc(-50% + 5vw));
+            }
         
             background: radial-gradient(
                     circle,
