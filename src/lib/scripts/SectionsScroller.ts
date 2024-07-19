@@ -1,4 +1,4 @@
-import { isContactsExpanded } from "./context"
+import type { SwipedEvent } from "swiped-events"
 
 export class SectionsScroller {
     readonly sections = [
@@ -19,6 +19,33 @@ export class SectionsScroller {
 
     private sectionsContainer?: HTMLDivElement;
 
+    private handleScroll(isScrollUp: boolean) {
+        if (this.isScrolling) return
+
+        if (typeof this.onWheelHandlerDebounce === 'number') {
+            clearTimeout(this.onWheelHandlerDebounce)
+        }
+
+        const isScrollDown = !isScrollUp
+
+        this.onWheelHandlerDebounce = setTimeout(() => {
+            const forbiddenScrollDown = isScrollDown && this.currentSection === this.maxSection
+            const forbiddenScrollUp = isScrollUp && this.currentSection === this.minSection
+
+            if (forbiddenScrollDown || forbiddenScrollUp) {
+                return
+            }
+
+            if (isScrollDown) {
+                this.currentSection++;
+            } else {
+                this.currentSection--;
+            }
+
+            this.scrollToCurrentSection()
+        }, 50)
+    }
+
     initialize() {
         this.sectionsContainer = document.querySelector('.sections') as HTMLDivElement;
 
@@ -29,30 +56,16 @@ export class SectionsScroller {
         document.addEventListener('wheel', (event) => {
             if (event.deltaY === 0 || this.isScrolling) return
     
-            if (typeof this.onWheelHandlerDebounce === 'number') {
-                clearTimeout(this.onWheelHandlerDebounce)
-            }
-    
-            this.onWheelHandlerDebounce = setTimeout(() => {
-                const isScrollDown = event.deltaY > 0
-                const isScrollUp = event.deltaY < 0
-    
-                const forbiddenScrollDown = isScrollDown && this.currentSection === this.maxSection
-                const forbiddenScrollUp = isScrollUp && this.currentSection === this.minSection
-    
-                if (forbiddenScrollDown || forbiddenScrollUp) {
-                    return
-                }
-    
-                if (isScrollDown) {
-                    this.currentSection++;
-                } else {
-                    this.currentSection--;
-                }
-    
-                this.scrollToCurrentSection()
-            }, 50)
+            this.handleScroll(event.deltaY < 0)
         })
+
+        document.addEventListener('swiped', (e) => {
+            const event = e as SwipedEvent
+            
+            if (event.detail.dir === 'left' || event.detail.dir === 'right') return
+
+            this.handleScroll(event.detail.dir === 'down')
+          });
     }
 
     scrollToHash() {

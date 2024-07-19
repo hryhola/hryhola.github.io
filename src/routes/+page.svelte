@@ -14,6 +14,8 @@
 
         scroller.initialize()
         scroller.scrollToHash()
+
+        import('swiped-events');
     })
 </script>
 
