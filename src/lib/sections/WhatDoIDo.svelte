@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Title from "$lib/components/what-do-I-do/Title.svelte"
     import { isLightBulbHover  } from "$lib/scripts/context";
 
@@ -12,7 +12,7 @@
         </div>
 
         <article data-is-light={$isLightBulbHover}>
-            <h3 on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
+            <h3>
                 <Title text="Solve problems" />
                 <span class="light-rays-wrapper" >
                     <span class="light-rays">
@@ -95,20 +95,12 @@
             justify-content: center;
             align-items: center;
 
-            pointer-events: none;
+            pointer-events: none!important;
 
             width: 0px;
             height: 0px;
 
             transform: translate(calc(-50% + 3vw), calc(-50% + 2.5vw));
-            
-            @media screen and (max-width: $width-tablet) {
-                transform: translate(calc(-50% + 6vw), calc(-50% + 2.5vw));
-            }
-
-            @media screen and (max-width: $width-phone) {
-                transform: translate(calc(-50% + 6vw), calc(-50% + 5vw));
-            }
         
             background: radial-gradient(
                     circle,
@@ -132,8 +124,6 @@
                 user-select: none;
 
                 max-height: 10vw;
-                /* @media screen and (max-width: $width-tablet) {
-                } */
             }
 
             &-wrapper {
