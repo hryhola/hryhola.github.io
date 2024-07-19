@@ -17,10 +17,41 @@ export class SectionsScroller {
     private isScrolling = false
     private onWheelHandlerDebounce?: number;
 
-    private sectionsContainer?: HTMLDivElement;
+    private containerElement?: HTMLDivElement;
+    private sectionsElements?: HTMLDivElement[]
+
+    private getNextSection(isScrollUp: boolean) {
+        if (isScrollUp) {
+            return this.currentSection - 1
+        } else {
+            return this.currentSection + 1;
+        }
+    }
+
+    private isCurrentSectionScrolled(toUp: boolean) {
+        if (!this.sectionsElements) {
+            console.error('sectionsHTML is not defined!')
+            
+            return
+        }
+
+        const section = this.sectionsElements[this.currentSection]
+
+        if (!section) {
+            console.error('Cannot get current section!')
+
+            return false
+        }
+
+        if (toUp) {
+            return section.scrollTop === 0
+        } else {
+            return section.scrollHeight - section.scrollTop - section.clientHeight < 1
+        }
+    }
 
     private handleScroll(isScrollUp: boolean) {
-        if (this.isScrolling) return
+        if (this.isScrolling || !this.isCurrentSectionScrolled(isScrollUp)) return
 
         if (typeof this.onWheelHandlerDebounce === 'number') {
             clearTimeout(this.onWheelHandlerDebounce)
@@ -32,24 +63,21 @@ export class SectionsScroller {
             const forbiddenScrollDown = isScrollDown && this.currentSection === this.maxSection
             const forbiddenScrollUp = isScrollUp && this.currentSection === this.minSection
 
-            if (forbiddenScrollDown || forbiddenScrollUp) {
+            if (forbiddenScrollDown || forbiddenScrollUp || !this.isCurrentSectionScrolled(isScrollUp)) {
                 return
             }
 
-            if (isScrollDown) {
-                this.currentSection++;
-            } else {
-                this.currentSection--;
-            }
+            this.currentSection = this.getNextSection(isScrollUp)
 
             this.scrollToCurrentSection()
         }, 50)
     }
 
     initialize() {
-        this.sectionsContainer = document.querySelector('.sections') as HTMLDivElement;
+        this.containerElement = document.querySelector('.sections') as HTMLDivElement;
+        this.sectionsElements = [...this.containerElement.querySelectorAll('section')] as HTMLDivElement[];
 
-        this.sectionsContainer.addEventListener('transitionend', () => {
+        this.containerElement.addEventListener('transitionend', () => {
             this.isScrolling = false
         })
 
@@ -77,7 +105,7 @@ export class SectionsScroller {
     }
 
     scrollToCurrentSection() {
-        if (!this.sectionsContainer) {
+        if (!this.containerElement) {
             console.error('Sections container is not defined!')
             
             return false
@@ -97,7 +125,7 @@ export class SectionsScroller {
             history.pushState({}, document.title, window.location.pathname + window.location.search)
         }
 
-        this.sectionsContainer.setAttribute('style', 'top: -' + (this.currentSection * 100) + 'vh')
+        this.containerElement.setAttribute('style', 'top: -' + (this.currentSection * 100) + 'vh')
 
         this.isScrolling = true
     }

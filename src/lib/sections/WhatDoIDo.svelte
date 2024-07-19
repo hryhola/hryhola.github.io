@@ -41,7 +41,6 @@
         background: black;
         color: white;
         font-family: 'Fira Code', monospace;
-        overflow: hidden;
 
         .container {
             display: flex;
@@ -49,6 +48,7 @@
         }
     
         .dude-wrapper {
+            overflow: hidden;
             img {
                 position: relative;
                 z-index: 2;
@@ -57,6 +57,7 @@
         }
 
         article {
+            min-height: 550px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
