@@ -1,11 +1,13 @@
 <script lang="ts">
+    export let isVisible: boolean
+
     let hoverOverDE = false
     let hoverOverEN = false
 
     $: hover = hoverOverDE || hoverOverEN;
 </script>
 
-<blockquote class="kant-quote" cite="https://de.wikisource.org/wiki/Seite:Allgemeine_Naturgeschichte_und_Theorie_des_Himmels.djvu/33">
+<blockquote data-is-visible={isVisible} class="kant-quote" cite="https://de.wikisource.org/wiki/Seite:Allgemeine_Naturgeschichte_und_Theorie_des_Himmels.djvu/33">
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <span
         role="note"
@@ -17,7 +19,7 @@
         Gebet mir Materie, ich will eine Welt daraus bauen!
     </span>
 </blockquote>
-<blockquote class="kant-quote">
+<blockquote data-is-visible={isVisible} class="kant-quote">
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <span
         role="note"
@@ -45,6 +47,10 @@
 
         &:last-of-type {
             pointer-events: none;
+        }
+
+        &[data-is-visible="false"] {
+            display: none;
         }
 
         span {

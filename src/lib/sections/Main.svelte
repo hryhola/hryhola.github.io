@@ -1,11 +1,17 @@
-<script>
+<script lang="ts">
     import Contacts from "$lib/components/main/Contacts.svelte";
     import HeaderQuote from "$lib/components/main/HeaderQuote.svelte";
     import Name from "$lib/components/main/Name.svelte";
     import Navigation from "$lib/components/main/Navigation.svelte";
+
+    let isHeaderVisible = true
+
+    const handleSectionScroll = (event: Event) => {
+        isHeaderVisible = (event.target as HTMLDivElement).scrollTop === 0
+    }
 </script>
-<section itemscope itemtype="http://schema.org/Person">
-    <HeaderQuote />
+<section on:scroll={handleSectionScroll} itemscope itemtype="http://schema.org/Person">
+    <HeaderQuote isVisible={isHeaderVisible} />
     <main class="container">
         <Name />
         <Navigation />
