@@ -80,6 +80,8 @@
 </dd>
 
 <style lang="scss">
+    @import '../../variables.scss';
+
     @keyframes tooltip {
         from {
             opacity: 1;
@@ -140,7 +142,7 @@
 
     dt {
         padding-left: 6px;
-        width: var(--marker-width);
+        width: $marker-width;
 
         &:hover + dd .copy-wrapper button {
             width: 30px;

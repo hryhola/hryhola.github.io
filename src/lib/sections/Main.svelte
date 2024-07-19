@@ -19,11 +19,19 @@
     main {
         padding-top: 103px;
         padding-left: 46px;
+        padding-right: 46px;
         height: 100%;
         display: flex;
         flex-flow: column;
         justify-content: space-around;
         position: relative;
+        overflow: hidden;
+        min-height: 550px;
+
+        @media screen and (max-width: 490px) {
+            padding-left: 7vw;
+            padding-right: 7vw;
+        }
     }
 
     .dude-wrapper {
@@ -38,7 +46,12 @@
         img {
             z-index: 0;
             height: 90vh;
+            min-height: 550px;
             filter: saturate(0);
+        }
+
+        @media (max-width: 1000px) {
+            visibility: hidden;
         }
     }
 </style>

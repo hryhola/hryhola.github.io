@@ -30,6 +30,8 @@
 </blockquote>
 
 <style lang="scss">
+    @import '../../variables.scss';
+
     .kant-quote {
         position: absolute;
         text-align: center;
@@ -37,6 +39,9 @@
         width: 100%;
         padding: 43px 0 0 0;
         z-index: 1;
+
+        padding-left: 7vw;
+        padding-right: 7vw;
 
         &:last-of-type {
             pointer-events: none;
@@ -49,6 +54,10 @@
             text-align: center;
             transition: 2s;
             letter-spacing: 4.2px;
+
+            @media screen and (max-width: $width-phone) {
+                font-size: calc($font-size-phone / 1.5);
+            }
         }
     }
 

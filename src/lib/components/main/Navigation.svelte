@@ -37,13 +37,24 @@
 </nav>
 
 <style lang="scss">
+    @import '../../variables.scss';
+
     nav {
         font-family: "Fira Code", monospace;
         font-size: 18px;
 
+
+        @media screen and (max-width: $width-tablet) {
+            font-size: $font-size-tablet;
+        }
+    
+        @media screen and (max-width: $width-phone) {
+            font-size: $font-size-phone;
+        }
+
         .marker {
             display: inline-block;
-            width: var(--marker-width);
+            width: $marker-width;
         }
 
         a {
@@ -54,7 +65,7 @@
         #contacts-marker {
             display: inline-block;
 
-            transition: 0.5s;
+            transition: transform 0.5s;
 
             &[data-active="true"] {
                 transform: rotate(90deg);

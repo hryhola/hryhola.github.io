@@ -10,7 +10,7 @@
     import { isContactsExpanded } from '$lib/scripts/context'
 
     onMount(() => {
-        $isContactsExpanded = true
+        $isContactsExpanded = window.screen.width > 420;
 
         scroller.initialize()
         scroller.scrollToHash()
