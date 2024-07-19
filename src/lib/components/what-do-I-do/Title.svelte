@@ -16,12 +16,22 @@
 </span>
 
 <style lang="scss">
+    @import '../../variables.scss';
+
     .title {
         position: relative;
-        font-size: 58px;
+        font-size: 4vw;
         font-weight: 600;
         z-index: 5;
         text-wrap: nowrap;
+
+        @media screen and (max-width: $width-tablet) {
+            font-size: 4vw;
+        }
+
+        @media screen and (max-width: $width-phone) {
+            font-size: 8vw;
+        }
 
         span {
             position: relative;
