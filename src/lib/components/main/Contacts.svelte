@@ -2,7 +2,7 @@
     import { isContactsExpanded } from "$lib/scripts/context";
     import ContactItem from "./ContactItem.svelte"
 </script>
-<div id="contacts" data-is-open={$isContactsExpanded}>
+<div id="contacts" aria-hidden="{$isContactsExpanded}" data-is-open={$isContactsExpanded}>
     <dl>
         <ContactItem
             href="https://t.me/VladHryhola"
