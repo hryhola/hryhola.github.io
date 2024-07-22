@@ -6,34 +6,36 @@
     const letBeDark = () => isLightBulbHover.set(false)
 </script>
 <section id="what-do-I-do">
-    <div class="container">
-        <div class="dude-wrapper">
-            <img src="pictures/Dude_Standing.png" alt="Dude" />
-        </div>
-
-        <article data-is-light={$isLightBulbHover}>
-            <h3>
-                <Title text="Solve problems" />
-                <span class="light-rays-wrapper" >
-                    <span class="light-rays">
-                        <img
-                            src="pictures/light_bulb.png"
-                            alt="light bulb"
-                        />
-                    </span>
-                </span>
-            </h3>
-
-            <div class="article-text">
-                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
-                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
-                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
-                    Fixed using: languages - formal and human, frameworks, platforms
-                    and most importantly <strong>analytical thinking</strong>.
-                </p>
-                <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>Fixed to improve the world I live in.</p>
+    <div class="crop-overflow">
+        <div class="container">
+            <div class="dude-wrapper">
+                <img src="pictures/Dude_Standing.png" alt="Dude" />
             </div>
-        </article>
+
+            <article data-is-light={$isLightBulbHover}>
+                <h3>
+                    <Title text="Solve problems" />
+                    <span class="light-rays-wrapper" >
+                        <span class="light-rays">
+                            <img
+                                src="pictures/light_bulb.png"
+                                alt="light bulb"
+                            />
+                        </span>
+                    </span>
+                </h3>
+
+                <div class="article-text">
+                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
+                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
+                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
+                        Fixed using: languages - formal and human, frameworks, platforms
+                        and most importantly <strong>analytical thinking</strong>.
+                    </p>
+                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>Fixed to improve the world I live in.</p>
+                </div>
+            </article>
+        </div>
     </div>
 </section>
 
@@ -44,7 +46,12 @@
         background: black;
         color: white;
         font-family: 'Fira Code', monospace;
-        overflow: hidden;
+
+        .crop-overflow {
+            overflow: hidden;
+            max-height: 100vh;
+            min-height: 550px;
+        }
 
         .container {
             display: flex;
@@ -77,10 +84,10 @@
 
             .article-text {
                 height: 100%;
+                min-height: 400px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
-                overflow: auto;
             }
         }
 
