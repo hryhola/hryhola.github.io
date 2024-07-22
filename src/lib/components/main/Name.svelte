@@ -3,13 +3,25 @@
     <br />
     <span itemprop="familyName">Hryhola</span>
 </h1>
-<h2>
+<h2 class="header-normal">
     <span class="typing">
-        <span class="typing"><span itemprop="jobTitle">Software Engineer</span>.</span>
-        <br />
-        <span class="typing"><span itemprop="hasOccupation">Private entrepreneur</span>.</span>
+        <span itemprop="jobTitle">Software Engineer</span>.
+        <span itemprop="hasOccupation">Private entrepreneur</span>.
     </span>
 </h2>
+<div class="header-small">
+    <h2>
+        <span class="typing typing-job">
+            <span itemprop="jobTitle">Software Engineer</span>.
+        </span>
+    </h2>
+    <h2>
+        <span class="typing typing-occupation">
+            <span itemprop="hasOccupation">Private entrepreneur</span>.
+        </span>
+    </h2>
+</div>
+
 
 <style lang="scss">
     @import '../../variables.scss';
@@ -37,6 +49,23 @@
         }
     }
 
+
+    .header-normal {
+        display: grid;
+
+        @media screen and (max-width: $width-phone) {
+            display: none;
+        }
+    }
+
+    .header-small {
+        display: none;
+
+        @media screen and (max-width: $width-phone) {
+            display: block;
+        }
+    }
+
     h2 {
         font-family: "Fira Code", monospace;
         font-optical-sizing: auto;
@@ -49,47 +78,42 @@
         display: grid;
         grid-template-columns: min-content;
 
-        br {
-            display: none;
-        }
-
         @media screen and (max-width: $width-tablet) {
             font-size: $font-size-tablet;
         }
 
         @media screen and (max-width: $width-phone) {
             font-size: $font-size-phone;
-            br {
-                display: block;
-            }
         }
     }
 
     .typing {
         overflow: hidden;
-        border-right: 1px solid black;
         letter-spacing: 1px;
-        animation: typing 2s steps(40, end), removeBorder 1s 2s forwards;
+        animation: typing 2s steps(40, end) forwards, removeBorder 1s 2s forwards;
 
-        @media screen and (min-width: $width-phone) {
-            & & {
-                animation: none;
-                border-right: none;
-            }
-        }
-    
         @media screen and (max-width: $width-phone) {
-            animation: typing 2s steps(21, end), removeBorder 1s 2s forwards;
+            &-job {
+                animation: typing 1s steps(18, end), removeBorder 1s 2s forwards;
+            }
 
-            & & {
-                border-right: none;
+            &-occupation {
+                width: 0;
+                border: none;
+    
+                animation: typing 1s 1s steps(21, end) forwards, removeBorder 1s 2s forwards;
             }
         }
     }
 
+    @keyframes appear {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
     @keyframes typing {
-        from { width: 0 }
-        to { width: 100%; }
+        from { width: 0; border-right: 1px solid black; }
+        to { width: 100%; border-right: 1px solid black; }
     }
 
     @keyframes removeBorder {
