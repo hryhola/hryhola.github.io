@@ -12,8 +12,16 @@
         audioContext.initialize()
 
         for (let keyIndex = 0; keyIndex < skills.length; keyIndex++) {
-            await audioContext.load(getKeyFile(keyIndex + 21))
+            audioContext.load(getKeyFile(keyIndex + 21))
         }
+
+        document.addEventListener('click', () => {
+            skillPianoDisabled = false
+        }, { once: true })
+
+        document.addEventListener('keypress', () => {
+            skillPianoDisabled = false
+        }, { once: true })
     });
 
     $: currentSkill = currentSkillIndex ? skills[currentSkillIndex] : undefined

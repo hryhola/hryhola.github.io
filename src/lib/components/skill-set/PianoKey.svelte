@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { scroller } from '$lib/scripts/SectionsScroller'
+
     export let hasBlackKey: boolean | undefined = undefined
     export let noteName: string | undefined = undefined
     export let noteColor: string | undefined = undefined
@@ -8,7 +10,18 @@
     export let disabled: boolean
     export let width: number = 10
 
-    const handleMouseOver = () => {
+    const scrollToThis = scroller.createFocusHandler(2)
+
+    const handleFocus = () => {
+        scrollToThis()
+        selectNote()
+    }
+
+    const handleBlur = () => {
+        unselectNote()
+    }
+
+    const selectNote = () => {
         if (disabled) return
 
         calculatedNoteBackground = noteBackground || '';
@@ -17,7 +30,7 @@
         if (onHover) onHover()
     }
 
-    const handleMouseOut = () => {
+    const unselectNote = () => {
         if (disabled) return
 
         calculatedNoteBackground = ''
@@ -37,16 +50,18 @@
         </div>
     {/if}
     {#if noteName}
-        <div
+        <div class="key-note"
             role="listitem"
             style="width: {width}%; background: {calculatedNoteBackground};"
-            on:mouseover={handleMouseOver}
-            on:mouseout={handleMouseOut}
-            on:focus={handleMouseOver}
-            on:blur={handleMouseOut}
-            class="key-note"
+            tabindex="0"
+            on:mouseover={selectNote}
+            on:mouseout={unselectNote}
+            on:focus={handleFocus}
+            on:blur={handleBlur}
         >
-            <div class="key-note-text" style="color: {calculatedNoteColor}; {calculatedNoteBackground ? `background: linear-gradient(90deg, transparent, ${calculatedNoteBackground});` : ''}">
+            <div class="key-note__tail"
+                style="color: {calculatedNoteColor}; {calculatedNoteBackground ? `background: linear-gradient(90deg, transparent, ${calculatedNoteBackground});` : ''}"
+            >
                 {noteName}
             </div>
         </div>
@@ -94,7 +109,7 @@
                 transition: 0s; 
             }
 
-            &-text {
+            &__tail {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -108,8 +123,9 @@
 
                 font-family: Staatliches;
                 font-size: calc(100vh / 23 / 2);
+                padding-right: calc(100vh / 23 / 2);
 
-                width: 100px;
+                width: 110px;
                 height: 100%;
             }
         }

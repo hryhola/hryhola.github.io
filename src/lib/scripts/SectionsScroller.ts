@@ -141,6 +141,13 @@ export class SectionsScroller {
 
         this.scrollToCurrentSection()
     }
+
+    createFocusHandler(section: number) {
+        return () => {
+            if (this.currentSection !== section)
+                this.scrollToSection(section)
+        }
+    }
 }
 
 export const scroller = new SectionsScroller()

@@ -49,7 +49,6 @@
             .catch(e => console.error(e));
     }
 
-    $: realHref = $isContactsExpanded ? href : ''
     $: isActive = $isContactsExpanded && (isLogoHover || isTextHover || isLinkFocus || isButtonFocus)
     $: copyButtonAttributes = isActive ? {} : { disabled: true }
     $: tooltipAttributes = $isContactsExpanded ? {} : { hidden: true }
@@ -65,7 +64,7 @@
     on:mouseenter={() => setTextHover(true)}
     on:mouseleave={() => setTextHover(false)}
 >
-    <a href={realHref} {target} {itemprop} on:focus={() => setIsLinkFocus(true)} on:blur={() => setIsLinkFocus(false)} >{text}</a>
+    <a tabindex="{$isContactsExpanded ? 0 : -1}" href={href} {target} {itemprop} on:focus={() => setIsLinkFocus(true)} on:blur={() => setIsLinkFocus(false)} >{text}</a>
     <div class="copy-wrapper">
         <button
             {...copyButtonAttributes}

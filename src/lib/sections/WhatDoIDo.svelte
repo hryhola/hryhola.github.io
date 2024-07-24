@@ -1,9 +1,17 @@
 <script lang="ts">
     import Title from "$lib/components/what-do-I-do/Title.svelte"
     import { isLightBulbHover  } from "$lib/scripts/context";
+    import { scroller } from "$lib/scripts/SectionsScroller";
 
     const letBeLight = () => isLightBulbHover.set(true)
     const letBeDark = () => isLightBulbHover.set(false)
+
+    const scrollToThis = scroller.createFocusHandler(1)
+
+    const focusHandler = () => {
+        scrollToThis()
+        letBeLight()
+    }
 </script>
 <section id="what-do-I-do">
     <div class="crop-overflow">
@@ -13,7 +21,7 @@
             </div>
 
             <article data-is-light={$isLightBulbHover}>
-                <h3>
+                <h3 on:focus={focusHandler} tabindex="0">
                     <Title text="Solve problems" />
                     <span class="light-rays-wrapper" >
                         <span class="light-rays">
@@ -26,13 +34,13 @@
                 </h3>
 
                 <div class="article-text">
-                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
-                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
-                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
                         Fixed using: languages - formal and human, frameworks, platforms
                         and most importantly <strong>analytical thinking</strong>.
                     </p>
-                    <p on:mouseenter={letBeLight} on:mouseleave={letBeDark}>Fixed to improve the world I live in.</p>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark} on:blur={letBeDark}>Fixed to improve the world I live in.</p>
                 </div>
             </article>
         </div>
