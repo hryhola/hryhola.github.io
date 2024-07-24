@@ -35,10 +35,7 @@
         <div class="piano-dude">
             <img src="pictures/Piano_Dude.png" alt="A man playing piano">
         </div>
-        <!-- TODO -->
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div class="skills-keys" data-disabled="{skillPianoDisabled}" on:click|once={() => { skillPianoDisabled = false; }}>
+        <div role="{skillPianoDisabled ? 'button' : 'banner'}" class="skills-keys" data-disabled="{skillPianoDisabled}" on:click|once={() => { skillPianoDisabled = false; }}>
             {#each skills as skill, i}
                 <PianoKey
                     noteName={skill.name}

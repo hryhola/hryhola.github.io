@@ -123,7 +123,7 @@
 
                 font-family: Staatliches;
                 font-size: calc(100vh / 23 / 2);
-                padding-right: calc(100vh / 23 / 2);
+                padding-right: calc(100vh / 23 / 4);
 
                 width: 110px;
                 height: 100%;

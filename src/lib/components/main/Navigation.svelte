@@ -24,16 +24,16 @@
 
 <nav>
     <ul>
-        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:blur={focusHandler} data-scroll-index="1" href="#what-do-I-do">what do I do</a></li>
-        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:blur={focusHandler} data-scroll-index="2" href="#skill-set">skill set</a></li>
-        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:blur={focusHandler} data-scroll-index="3" href="#experience">experience</a></li>  
-        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:blur={focusHandler} data-scroll-index="4" href="#education">education</a></li>
+        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="1" href="#what-do-I-do">what do I do</a></li>
+        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="2" href="#skill-set">skill set</a></li>
+        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="3" href="#experience">experience</a></li>  
+        <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="4" href="#education">education</a></li>
         <li>
             <span class="marker">
                 <span id="contacts-marker" data-active={$isContactsExpanded}>
                     &gt;
                 </span>
-            </span><a on:click|preventDefault={handleContactsExpand} on:blur={focusHandler} href="#contacts">contacts</a>
+            </span><a on:click|preventDefault={handleContactsExpand} on:focus={focusHandler} href="#contacts">contacts</a>
         </li>
     </ul>
 </nav>
