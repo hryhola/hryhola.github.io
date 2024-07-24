@@ -1,3 +1,5 @@
+$min-section-height: 550px;
+
 $marker-width: 32px;
 
 $width-tablet: 768px;
@@ -5,3 +7,7 @@ $font-size-tablet: 3vw;
 
 $width-phone: 420px;
 $font-size-phone: 5vw;
+
+$piano-dude-width: calc(min($min-section-height, max(100vh, 300px)));
+$piano-offset: $piano-dude-width / 3.2;
+$piano-key-height: calc(max(100vh / 23, $min-section-height / 23))

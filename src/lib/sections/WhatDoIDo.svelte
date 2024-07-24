@@ -58,7 +58,7 @@
         .crop-overflow {
             overflow: hidden;
             max-height: 100vh;
-            min-height: 550px;
+            min-height: $min-section-height;
         }
 
         .container {

@@ -68,11 +68,13 @@
     {/if}
 </div>
 <style lang="scss">
+    @import '../../variables.scss';
+ 
     .key {
-        height: calc(100vh / 23);
+        height: $piano-key-height;
         display: flex;
         flex-flow: row nowrap;
-        width: calc(100% + 186px);
+        width: calc(100% + $piano-offset);
 
         &-white {
             min-width: 150px;
@@ -122,8 +124,8 @@
                 color: white;
 
                 font-family: Staatliches;
-                font-size: calc(100vh / 23 / 2);
-                padding-right: calc(100vh / 23 / 4);
+                font-size: calc($piano-key-height / 2);
+                padding-right: calc($piano-key-height / 4);
 
                 width: 110px;
                 height: 100%;

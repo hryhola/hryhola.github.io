@@ -62,34 +62,49 @@
     </div>
 </section>
 <style lang="scss">
+    @import '../variables.scss';
     @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
     #skill-set .container {
-        max-width: 100%;
+        max-width: 1980px;
+        min-height: $min-section-height;
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
         align-content: center;
         flex-wrap: nowrap;
+
+        z-index: 2;
     }
 
     .piano-dude {
         filter: saturate(0);
         z-index: 11;
         pointer-events: none;
+        overflow: visible;
+
+        height: 100%;
+        width: $piano-dude-width;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: center;
+        flex-wrap: nowrap;
         
         img {
-            max-width: 550px;
+            width: 100%;
             transform: translate(-50px);
         }
     }
 
     .skills-keys {
-        height: 100vh;
-        width: calc(100% - 186px);
+        width: calc(100% - $piano-offset);
         border-left: 15px solid black;
-        transform: translate(-186px);
+        transform: translate(calc(0px - $piano-offset));
         z-index: 10;
         transition: opacity 0.5s;
 
@@ -102,7 +117,7 @@
     .skills-description {
         position: absolute;
         right: 0;
-        height: 100vh;
+        height: 100%;
         width: 50vw;
 
         text-align: right;
@@ -116,6 +131,8 @@
         justify-content: center;
         align-items: flex-end;
         padding-right: 20px;
+
+        pointer-events: none;
 
         &__name {
             font-size: 84px;

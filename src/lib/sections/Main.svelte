@@ -22,6 +22,8 @@
     </main>
 </section>
 <style lang="scss">
+    @import '../variables.scss';
+ 
     main {
         padding-top: 103px;
         padding-left: 46px;
@@ -32,7 +34,7 @@
         justify-content: space-around;
         position: relative;
         overflow: hidden;
-        min-height: 550px;
+        min-height: $min-section-height;
 
         @media screen and (max-width: 490px) {
             padding-left: 7vw;
@@ -52,7 +54,7 @@
         img {
             z-index: 0;
             height: 90vh;
-            min-height: 550px;
+            min-height: $min-section-height;
             filter: saturate(0);
         }
 
