@@ -2,11 +2,12 @@ $min-section-height: 550px;
 
 $marker-width: 32px;
 
+$width-tablet-big: 1112px;
 $width-tablet: 768px;
+$width-tablet-small: 630px;
 $font-size-tablet: 3vw;
 
 $width-phone: 420px;
-$width-phone-plus: 520px;
 $font-size-phone: 5vw;
 
 $piano-dude-width: calc(min($min-section-height, max(100vh, 300px)));

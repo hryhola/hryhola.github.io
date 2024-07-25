@@ -148,7 +148,7 @@
         "name": "Data Analytics",
         "shortName": "Data",
         "level": "Basic",
-        "description": "A lot of work for me included parsing, clearing and interpretation of data from various sources - XML, CSV, JSON etc.",
+        "description": "Parsing, clearing and interpretation of data from various sources.",
         "background": "#E5ECE5",
         "color": "black"
     },

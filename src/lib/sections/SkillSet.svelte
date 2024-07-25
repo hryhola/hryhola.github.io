@@ -5,7 +5,7 @@
     import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/piano'
     import { onMount } from 'svelte'
 
-    let currentSkillIndex: number | undefined = 2
+    let currentSkillIndex: number | undefined = 19
     let skillPianoDisabled = true
 
     onMount(async () => {
@@ -25,10 +25,10 @@
     });
 
     $: currentSkill = currentSkillIndex ? skills[currentSkillIndex] : undefined
-    $: gradientDeg = '90deg'
     $: currentSkillStyles = currentSkill ? {
         style: `background: linear-gradient(var(--gradient-deg), transparent, ${currentSkill.background}); color: ${currentSkill.color}`
     } : {}
+    $:isLongDescriptionName = currentSkill && currentSkill.name!.length > 8
 </script>
 
 <section id="skill-set">
@@ -56,7 +56,11 @@
         </div>
         <div {...currentSkillStyles} class="skills-description">
             {#if currentSkill}
-                <h4 class="skills-description__name">{currentSkill.name}</h4>
+                <h4 class="skills-description__name"
+                    class:skills-description__name--long={isLongDescriptionName}
+                >
+                    {currentSkill.name}
+                </h4>
                 <p class="skills-description__level">Level: {currentSkill.level}</p>
                 <p class="skills-description__text">{currentSkill.description}</p>
             {/if}
@@ -80,7 +84,7 @@
         position: relative;
         z-index: 2;
 
-        @media screen and (max-width: $width-phone-plus) {
+        @media screen and (max-width: $width-tablet-small) {
             flex-direction: column;
             height: 100%;
         }
@@ -107,12 +111,16 @@
             transform: translate(-50px);
         }
 
-        @media screen and (max-width: $width-phone-plus) {
+        @media screen and (max-width: $width-tablet-small) {
             width: 100%;
-            height: 300px;
+            height: calc(min(40vw, 200px));
+            align-items: flex-start;
+            justify-content: center;
 
             img {
-                transform: rotate(90deg) translate(-50px);
+                height: 100%;
+                width: auto;
+                transform: rotate(90deg) translate(-50px) scale(2);
             }
         }
     }
@@ -128,7 +136,7 @@
             opacity: 0.5;
             cursor: pointer;
         }
-        @media screen and (max-width: $width-phone-plus) {
+        @media screen and (max-width: $width-tablet-small) {
             display: flex;
             transform: translate(0, calc(0px - $piano-offset-mobile));
             width: 100%;
@@ -154,17 +162,17 @@
 
         --gradient-deg: 90deg;
 
-        @media screen and (min-width: $width-phone-plus) {
+        @media screen and (min-width: $width-tablet-small) {
             padding-right: 20px;
             right: 0;
             height: 100%;
             width: 50vw;
             
         }
-        @media screen and (max-width: $width-phone-plus) {
+        @media screen and (max-width: $width-tablet-small) {
             padding: 20px;
             bottom: 0;
-            height: 40vh;
+            height: 50vh;
             width: 100%;
             --gradient-deg: 180deg;
 
@@ -177,12 +185,23 @@
         }
 
         &__name {
-            font-size: 84px;
+            font-size: 5vw;
             font-weight: 500;
 
-            @media screen and (max-width: $width-phone-plus) {
+            @media screen and (max-width: $width-tablet-small) {
                 font-size: 15vw;
                 text-align: center;
+
+                &--long {
+                    font-size: 11vw;
+                }
+            }
+
+            @media screen and (min-width: $width-tablet-small) and (max-width: $width-tablet-big) {
+                &--long {
+                    font-size: 3vw;
+                    font-weight: 600;
+                }
             }
         }
 
@@ -190,11 +209,18 @@
             font-size: 20px;
         }
 
+        &__level {
+            margin: 30px 0;
+
+            @media screen and (max-width: $width-tablet-big) {
+                margin: 0 0 10px 0;
+            }
+        }
+
         &__text {
-            margin-top: 30px;
             max-width: 50%;
 
-            @media screen and (max-width: $width-phone-plus) {
+            @media screen and (max-width: $width-tablet-small) {
                 margin-top: 0px;
                 max-width: 100%;
                 text-align: center;

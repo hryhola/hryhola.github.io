@@ -79,7 +79,7 @@
         flex-flow: row nowrap;
         width: calc(100% + $piano-offset);
 
-        @media screen and (max-width: $width-phone-plus) {
+        @media screen and (max-width: $width-tablet-small) {
             flex-flow: column nowrap;
             height: calc(100% + $piano-offset);
             width: $piano-key-width;
@@ -91,7 +91,7 @@
             border-right: 1px solid black;
             border-bottom: 1px solid black;
 
-            @media screen and (max-width: $width-phone-plus) {
+            @media screen and (max-width: $width-tablet-small) {
                 min-height: 140px;
                 height: 140px;
                 width: 100%;
@@ -107,7 +107,7 @@
             right: 0;
             transform: translate(0, 150%);
 
-            @media screen and (max-width: $width-phone-plus) {
+            @media screen and (max-width: $width-tablet-small) {
                 height: 70px;
                 width: 50%;
                 transform: translate(50%, -100%);
@@ -132,11 +132,11 @@
                 transition: 0s; 
             }
 
-            @media screen and (min-width: $width-phone-plus) {
+            @media screen and (min-width: $width-tablet-small) {
                 height: auto!important;
             }
         
-            @media screen and (max-width: $width-phone-plus) {
+            @media screen and (max-width: $width-tablet-small) {
                 width: $piano-key-width!important;
                 flex-direction: column;
             }
@@ -164,7 +164,7 @@
                     display: none;
                 }
                 
-                @media screen and (max-width: $width-phone-plus) {
+                @media screen and (max-width: $width-tablet-small) {
                     height: 140px;
                     width: 100%!important;
     
