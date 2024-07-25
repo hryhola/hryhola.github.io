@@ -3,12 +3,13 @@
 
     export let hasBlackKey: boolean | undefined = undefined
     export let noteName: string | undefined = undefined
+    export let shortNoteName: string | undefined = undefined
     export let noteColor: string | undefined = undefined
     export let noteBackground: string | undefined = undefined
     export let onHover: Function | undefined = undefined
     export let onBlur: Function | undefined = undefined
     export let disabled: boolean
-    export let width: number = 10
+    export let distance: number = 10
 
     const scrollToThis = scroller.createFocusHandler(2)
 
@@ -50,9 +51,10 @@
         </div>
     {/if}
     {#if noteName}
+        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div class="key-note"
             role="listitem"
-            style="width: {width}%; background: {calculatedNoteBackground};"
+            style="width: {distance}%; height: calc({distance}% / 7 + 140px); background: {calculatedNoteBackground};"
             tabindex="0"
             on:mouseover={selectNote}
             on:mouseout={unselectNote}
@@ -62,7 +64,8 @@
             <div class="key-note__tail"
                 style="color: {calculatedNoteColor}; {calculatedNoteBackground ? `background: linear-gradient(90deg, transparent, ${calculatedNoteBackground});` : ''}"
             >
-                {noteName}
+                <span class="key-note__tail_text">{noteName}</span>
+                <span class="key-note__tail_short_text">{shortNoteName}</span>
             </div>
         </div>
     {/if}
@@ -76,11 +79,24 @@
         flex-flow: row nowrap;
         width: calc(100% + $piano-offset);
 
+        @media screen and (max-width: $width-phone-plus) {
+            flex-flow: column nowrap;
+            height: calc(100% + $piano-offset);
+            width: $piano-key-width;
+        }
+
         &-white {
             min-width: 150px;
             height: 100%;
             border-right: 1px solid black;
             border-bottom: 1px solid black;
+
+            @media screen and (max-width: $width-phone-plus) {
+                min-height: 140px;
+                height: 140px;
+                width: 100%;
+                min-width: auto;
+            }
         }
 
         &-black {
@@ -91,6 +107,11 @@
             right: 0;
             transform: translate(0, 150%);
 
+            @media screen and (max-width: $width-phone-plus) {
+                height: 70px;
+                width: 50%;
+                transform: translate(50%, -100%);
+            }
 
             &-wrapper {
                 position: relative;
@@ -111,6 +132,15 @@
                 transition: 0s; 
             }
 
+            @media screen and (min-width: $width-phone-plus) {
+                height: auto!important;
+            }
+        
+            @media screen and (max-width: $width-phone-plus) {
+                width: $piano-key-width!important;
+                flex-direction: column;
+            }
+
             &__tail {
                 display: flex;
                 flex-direction: row;
@@ -126,9 +156,39 @@
                 font-family: Staatliches;
                 font-size: calc($piano-key-height / 2);
                 padding-right: calc($piano-key-height / 4);
-
+                
                 width: 110px;
                 height: 100%;
+
+                &_short_text {
+                    display: none;
+                }
+                
+                @media screen and (max-width: $width-phone-plus) {
+                    height: 140px;
+                    width: 100%!important;
+    
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+                    background: linear-gradient(transparent, black);
+            
+                    font-size: calc($piano-key-height-mobile);
+                    padding-right: 0;
+                    padding-bottom: calc($piano-key-height-mobile / 2);
+                    letter-spacing: -0.4em;
+
+                    writing-mode: vertical-rl;
+                    text-orientation: upright;
+
+                    &_text {
+                        display: none;
+                    }
+
+                    &_short_text {
+                        display: inline;
+                    }
+                }
             }
         }
     }

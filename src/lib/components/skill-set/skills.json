@@ -2,6 +2,7 @@
     {},
     {
         "name": "JavaScript",
+        "shortName": "JS",
         "level": "Expert",
         "description": "We love it and we hate it. But it gets the job done.",
         "background": "#f7df1e",
@@ -9,6 +10,7 @@
     },
     {
         "name": "TypeScript",
+        "shortName": "TS",
         "level": "Expert",
         "description": "It's like JavaScript, but better.",
         "background": "#007ACC",
@@ -16,6 +18,7 @@
     },
     {
         "name": "C#",
+        "shortName": "C#",
         "level": "Basic",
         "description": "The most used language in my collage years.",
         "background": "#960892",
@@ -23,6 +26,7 @@
     },
     {
         "name": "Python",
+        "shortName": "PY",
         "level": "Basic",
         "description": "A few automation scripts were written.",
         "background": "#4580B1",
@@ -30,6 +34,7 @@
     },
     {
         "name": "SQL",
+        "shortName": "SQL",
         "level": "Advanced",
         "description": "Required skill for a developer.",
         "background": "#448E9A",
@@ -37,6 +42,7 @@
     },
     {
         "name": "HTML",
+        "shortName": "HTML",
         "level": "Expert",
         "description": "The first language that I've learned. ",
         "background": "#EF7234",
@@ -44,6 +50,7 @@
     },
     {
         "name": "CSS",
+        "shortName": "CSS",
         "level": "Expert",
         "description": "The language that makes your HTML fancy. Even more fancy with SCSS.",
         "background": "#254BDD",
@@ -51,6 +58,7 @@
     },
     {
         "name": "APEX",
+        "shortName": "APEX",
         "level": "Basic",
         "description": "Similar to Java, developer by Salesforce.",
         "background": "#08A4E1",
@@ -58,6 +66,7 @@
     },
     {
         "name": "Node",
+        "shortName": "Node",
         "level": "Expert",
         "description": "The platform to build almost anything, from a website to a game.",
         "background": "#8FC708",
@@ -65,6 +74,7 @@
     },
     {
         "name": "React",
+        "shortName": "React",
         "level": "Expert",
         "description": "Great library to build user interfaces. JSX is magic.",
         "background": "#66DBFB",
@@ -72,6 +82,7 @@
     },
     {
         "name": "Next",
+        "shortName": "Next",
         "level": "Advanced",
         "description": "The best full stack framework for JavaScript.",
         "background": "#080808",
@@ -79,6 +90,7 @@
     },
     {
         "name": "Svelte",
+        "shortName": "Svelte",
         "level": "Basic",
         "description": "This very page is build using Svelte.",
         "background": "#FF4408",
@@ -86,6 +98,7 @@
     },
     {
         "name": "Vue",
+        "shortName": "Vue",
         "level": "Basic",
         "description": "Cool, but React is better.",
         "background": "#47BA87",
@@ -93,6 +106,7 @@
     },
     {
         "name": "SalesForce",
+        "shortName": "SF",
         "level": "Advanced",
         "description": "Commerce Cloud, Service Cloud, Marketing Cloud, ISML and beyond.",
         "background": "#08A4E1",
@@ -100,6 +114,7 @@
     },
     {
         "name": "NoSQL",
+        "shortName": "NoSQL",
         "level": "Advanced",
         "description": "Databases like MongoDB, Firebase etc. are great alternatives for relation databases.",
         "background": "#C8DCF6",
@@ -107,6 +122,7 @@
     },
     {
         "name": "Web3",
+        "shortName": "Web3",
         "level": "Advanced",
         "description": "I'm familiar with such libraries like Web3.js, Ethers.js, etc. and work with Metamask and other wallets.",
         "background": "#AA53C7",
@@ -114,6 +130,7 @@
     },
     {
         "name": "Templates",
+        "shortName": "Tmpl",
         "level": "Expert",
         "description": "JSX, ISML, Handlebars, Velocity, Mustaches.",
         "background": "black",
@@ -121,6 +138,7 @@
     },
     {
         "name": "Agile & Scrum",
+        "shortName": "Agile",
         "level": "Expert",
         "description": "Sprints, Stories, Jira, Backlog, Product Owner, Planning, Retrospective, Demo etc.",
         "background": "#57A14A",
@@ -128,6 +146,7 @@
     },
     {
         "name": "Data Analytics",
+        "shortName": "Data",
         "level": "Basic",
         "description": "A lot of work for me included parsing, clearing and interpretation of data from various sources - XML, CSV, JSON etc.",
         "background": "#E5ECE5",
@@ -135,6 +154,7 @@
     },
     {
         "name": "Design",
+        "shortName": "Design",
         "level": "Advanced",
         "description": "Tools such as Photoshop, Illustrator, Figma, Vegas, Premiere Pro and beyond",
         "background": "#08253C",
@@ -142,6 +162,7 @@
     },
     {
         "name": "Music",
+        "shortName": "Music",
         "level": "Advanced",
         "description": "That's my hobby. I create melodies using various plugins in Reaper just for fun.",
         "background": "#61BC2E",

@@ -2,10 +2,10 @@
     import PianoKey from '$lib/components/skill-set/PianoKey.svelte'
     import skills from '$lib/components/skill-set/skills.json'
     import { audioContext } from '$lib/scripts/AudioContext'
-    import { getKeyFile, shouldRenderBlackKey, getKeyWidth } from '$lib/scripts/piano'
+    import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/piano'
     import { onMount } from 'svelte'
 
-    let currentSkillIndex: number | undefined = undefined
+    let currentSkillIndex: number | undefined = 2
     let skillPianoDisabled = true
 
     onMount(async () => {
@@ -25,8 +25,9 @@
     });
 
     $: currentSkill = currentSkillIndex ? skills[currentSkillIndex] : undefined
+    $: gradientDeg = '90deg'
     $: currentSkillStyles = currentSkill ? {
-        style: `background: linear-gradient(90deg, transparent, ${currentSkill.background}); color: ${currentSkill.color}`
+        style: `background: linear-gradient(var(--gradient-deg), transparent, ${currentSkill.background}); color: ${currentSkill.color}`
     } : {}
 </script>
 
@@ -39,10 +40,11 @@
             {#each skills as skill, i}
                 <PianoKey
                     noteName={skill.name}
+                    shortNoteName={skill.shortName}
                     noteBackground={skill.background}
                     noteColor={skill.color}
                     hasBlackKey={(i === skills.length - 1) ? false : shouldRenderBlackKey(i)}
-                    width={getKeyWidth(i, skills.length)}
+                    distance={getKeyDistance(i, skills.length)}
                     onHover={() => {
                         currentSkillIndex = i;
                         audioContext.play(getKeyFile(i + 21))
@@ -75,8 +77,13 @@
         justify-content: flex-start;
         align-content: center;
         flex-wrap: nowrap;
-
+        position: relative;
         z-index: 2;
+
+        @media screen and (max-width: $width-phone-plus) {
+            flex-direction: column;
+            height: 100%;
+        }
     }
 
     .piano-dude {
@@ -99,11 +106,20 @@
             width: 100%;
             transform: translate(-50px);
         }
+
+        @media screen and (max-width: $width-phone-plus) {
+            width: 100%;
+            height: 300px;
+
+            img {
+                transform: rotate(90deg) translate(-50px);
+            }
+        }
     }
 
     .skills-keys {
         width: calc(100% - $piano-offset);
-        border-left: 15px solid black;
+        border-left: $piano-border;
         transform: translate(calc(0px - $piano-offset));
         z-index: 10;
         transition: opacity 0.5s;
@@ -112,13 +128,17 @@
             opacity: 0.5;
             cursor: pointer;
         }
+        @media screen and (max-width: $width-phone-plus) {
+            display: flex;
+            transform: translate(0, calc(0px - $piano-offset-mobile));
+            width: 100%;
+            border-left: none;
+            border-top: $piano-border;
+        }
     }
     
     .skills-description {
         position: absolute;
-        right: 0;
-        height: 100%;
-        width: 50vw;
 
         text-align: right;
         font-family: 'Fira Code', monospace;
@@ -130,13 +150,40 @@
         flex-wrap: nowrap;
         justify-content: center;
         align-items: flex-end;
-        padding-right: 20px;
-
         pointer-events: none;
+
+        --gradient-deg: 90deg;
+
+        @media screen and (min-width: $width-phone-plus) {
+            padding-right: 20px;
+            right: 0;
+            height: 100%;
+            width: 50vw;
+            
+        }
+        @media screen and (max-width: $width-phone-plus) {
+            padding: 20px;
+            bottom: 0;
+            height: 40vh;
+            width: 100%;
+            --gradient-deg: 180deg;
+
+            flex-flow: column nowrap;
+            align-content: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: center;
+        }
 
         &__name {
             font-size: 84px;
             font-weight: 500;
+
+            @media screen and (max-width: $width-phone-plus) {
+                font-size: 15vw;
+                text-align: center;
+            }
         }
 
         &__level, &__text {
@@ -146,6 +193,12 @@
         &__text {
             margin-top: 30px;
             max-width: 50%;
+
+            @media screen and (max-width: $width-phone-plus) {
+                margin-top: 0px;
+                max-width: 100%;
+                text-align: center;
+            }
         }
     }
 </style>

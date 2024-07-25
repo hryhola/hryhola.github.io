@@ -6,8 +6,13 @@ $width-tablet: 768px;
 $font-size-tablet: 3vw;
 
 $width-phone: 420px;
+$width-phone-plus: 520px;
 $font-size-phone: 5vw;
 
 $piano-dude-width: calc(min($min-section-height, max(100vh, 300px)));
 $piano-offset: $piano-dude-width / 3.2;
-$piano-key-height: calc(max(100vh / 23, $min-section-height / 23))
+$piano-offset-mobile: calc(110px - 5vw);
+$piano-key-height: calc(max(100vh / 23, $min-section-height / 23));
+$piano-key-height-mobile: calc(max(100vw / 23));
+$piano-key-width: calc(max(100vw / 23));
+$piano-border: 15px solid black;

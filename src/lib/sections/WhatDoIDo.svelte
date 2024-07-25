@@ -21,6 +21,7 @@
             </div>
 
             <article data-is-light={$isLightBulbHover}>
+                <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                 <h3 on:focus={focusHandler} tabindex="0">
                     <Title text="Solve problems" />
                     <span class="light-rays-wrapper" >
@@ -34,12 +35,16 @@
                 </h3>
 
                 <div class="article-text">
+                    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
+                    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
+                    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>
                         Fixed using: languages - formal and human, frameworks, platforms
                         and most importantly <strong>analytical thinking</strong>.
                     </p>
+                    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark} on:blur={letBeDark}>Fixed to improve the world I live in.</p>
                 </div>
             </article>
