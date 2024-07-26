@@ -6,7 +6,7 @@
     import { onMount } from 'svelte'
     import { scroller } from '$lib/scripts/SectionsScroller'
 
-    let currentSkillIndex: number | undefined = undefined
+    let currentSkillIndex: number | undefined = 0
     let skillPianoDisabled = true
 
     const scrollToThis = scroller.createFocusHandler(2)
@@ -29,7 +29,8 @@
 
     $: currentSkill = currentSkillIndex ? skills[currentSkillIndex] : undefined
     $: currentSkillStyles = currentSkill ? {
-        style: `background: linear-gradient(var(--gradient-deg), transparent, ${currentSkill.background}); color: ${currentSkill.color}`
+        style: `background: linear-gradient(var(--gradient-deg), transparent, ${currentSkill.background}); color: ${currentSkill.color};`
+            + `box-shadow: var(--gradient-shadow-x) var(--gradient-shadow-y) ${currentSkill.background};`
     } : {}
     $:isLongDescriptionName = currentSkill && currentSkill.name!.length > 8
 </script>
@@ -167,6 +168,8 @@
         pointer-events: none;
 
         --gradient-deg: 90deg;
+        --gradient-shadow-x: 50px;
+        --gradient-shadow-y: 0px;
 
         @media screen and (min-width: $width-tablet-small) {
             padding-right: 20px;
@@ -181,6 +184,8 @@
             height: 50vh;
             width: 100%;
             --gradient-deg: 180deg;
+            --gradient-shadow-x: 0px;
+            --gradient-shadow-y: 50px;
 
             flex-flow: column nowrap;
             align-content: center;
@@ -191,11 +196,7 @@
         }
 
         @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet) {
-            height: 40vh;
-        }
-
-        @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet-small) {
-            height: calc(max(35vh, 100px));
+            justify-content: flex-end;
         }
 
         &__name {
