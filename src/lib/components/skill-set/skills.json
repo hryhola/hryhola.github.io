@@ -158,7 +158,7 @@
         "level": "Advanced",
         "description": "Tools such as Photoshop, Illustrator, Figma, Vegas, Premiere Pro and beyond",
         "background": "#08253C",
-        "color": "#37AAFE"
+        "color": "white"
     },
     {
         "name": "Music",

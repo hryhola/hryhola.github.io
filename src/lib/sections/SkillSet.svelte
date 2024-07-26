@@ -4,9 +4,12 @@
     import { audioContext } from '$lib/scripts/AudioContext'
     import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/piano'
     import { onMount } from 'svelte'
+    import { scroller } from '$lib/scripts/SectionsScroller'
 
-    let currentSkillIndex: number | undefined = 19
+    let currentSkillIndex: number | undefined = undefined
     let skillPianoDisabled = true
+
+    const scrollToThis = scroller.createFocusHandler(2)
 
     onMount(async () => {
         audioContext.initialize()
@@ -65,6 +68,9 @@
                 <p class="skills-description__text">{currentSkill.description}</p>
             {/if}
         </div>
+        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+        <span on:focus={scrollToThis} role="button" hidden={!skillPianoDisabled} tabindex="{skillPianoDisabled ? 0 : -1}" class="click-anything">Click anything!</span>
+
     </div>
 </section>
 <style lang="scss">
@@ -184,6 +190,14 @@
             align-items: center;
         }
 
+        @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet) {
+            height: 40vh;
+        }
+
+        @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet-small) {
+            height: calc(max(35vh, 100px));
+        }
+
         &__name {
             font-size: 5vw;
             font-weight: 500;
@@ -203,10 +217,19 @@
                     font-weight: 600;
                 }
             }
+
+            @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet-small) {
+                font-size: 5vw;
+                font-weight: 600;
+            }
         }
 
         &__level, &__text {
             font-size: 20px;
+
+            @media screen and (max-height: $height-tablet-small) {
+                font-size: 12px;
+            }
         }
 
         &__level {
@@ -214,6 +237,10 @@
 
             @media screen and (max-width: $width-tablet-big) {
                 margin: 0 0 10px 0;
+            }
+
+            @media screen and (max-width: $width-tablet-small) and (max-height: $height-tablet) {
+                margin: 0;
             }
         }
 
@@ -226,5 +253,17 @@
                 text-align: center;
             }
         }
+    }
+
+    .click-anything {
+        font-family: 'Fira Code', monospace;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        box-shadow: white 0px 0px 15px 15px;
+        background: white;
+        cursor: pointer;
     }
 </style>

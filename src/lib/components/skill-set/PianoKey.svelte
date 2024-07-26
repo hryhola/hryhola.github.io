@@ -55,7 +55,7 @@
         <div class="key-note"
             role="listitem"
             style="width: {distance}%; height: calc({distance}% / 7 + 140px); background: {calculatedNoteBackground};"
-            tabindex="0"
+            tabindex="{disabled ? -1 : 0}"
             on:mouseover={selectNote}
             on:mouseout={unselectNote}
             on:focus={handleFocus}
@@ -163,7 +163,20 @@
                 &_short_text {
                     display: none;
                 }
+
+                &_short_text, &_text {
+                    text-wrap: nowrap;
+                }
                 
+                @media screen and (max-width: $width-tablet-big) {
+                    &_text {
+                        display: none;
+                    }
+
+                    &_short_text {
+                        display: inline;
+                    }
+                }
                 @media screen and (max-width: $width-tablet-small) {
                     height: 140px;
                     width: 100%!important;
@@ -180,14 +193,6 @@
 
                     writing-mode: vertical-rl;
                     text-orientation: upright;
-
-                    &_text {
-                        display: none;
-                    }
-
-                    &_short_text {
-                        display: inline;
-                    }
                 }
             }
         }

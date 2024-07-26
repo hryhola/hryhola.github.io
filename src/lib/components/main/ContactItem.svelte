@@ -1,5 +1,6 @@
 <script lang="ts">
     import { isContactsExpanded } from "$lib/scripts/context";
+    import { scroller } from '$lib/scripts/SectionsScroller';
 
     export let imgSrc: string
     export let imgAlt: string
@@ -16,12 +17,21 @@
     let tooltip: HTMLSpanElement;
     let tooltipHideDebounce: number;
 
+    const scrollToThis = scroller.createFocusHandler(0);
+
     const setLogoHover = (value: boolean) => { isLogoHover = value }
     const setTextHover = (value: boolean) => { isTextHover = value }
-    const setIsButtonFocus = (value: boolean) => { isButtonFocus = value }
+    const setIsButtonFocus = (value: boolean) => {
+        if (value)
+            scrollToThis();
+
+        isButtonFocus = value
+    }
+
     const setIsLinkFocus = (value: boolean) => { 
         if (value) {
             isLinkFocus = true
+            scrollToThis();
         } else {
             setTimeout(() => {
                 isLinkFocus = false
