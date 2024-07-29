@@ -71,7 +71,11 @@
     }
 </script>
 
-<div style="animation-delay: {animationDelay}s" class="code-background" class:code-background--active="{active}">
+<div style="animation-delay: {animationDelay}s"
+    class="code-background"
+    class:code-background--active="{active}"
+    class:code-background--hidden="{hidden}"
+>
     {#each text as line, i}
         <span>
         {#if isIndexInMiddleFive(text, i)}
@@ -128,6 +132,10 @@
             .see-regular {
                 display: none;
             }
+        }
+
+        &--hidden {
+            display: none!important;
         }
     }
 
