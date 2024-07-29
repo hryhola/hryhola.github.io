@@ -4,26 +4,32 @@
 
     export let buttonRole = false
     export let buttonAnimationDelay = 0
+    export let onClick: () => void = () => {}
+    export let justifyContent: 'end' | 'start' | undefined = undefined
 
     let focused = false;
 
     const scrollToThis = scroller.createFocusHandler(3)
 
-    const cellFocusHandler = (id: number) => () => {
+    const focusHandler = () => {
         scrollToThis();
         focused = true;
     }
 
-    const cellBlurHandler = (id: number) => () => {
+    const blurHandler = () => {
         focused = false;
     }
+
+    $: styles = justifyContent ? `justify-content: ${justifyContent}` : '';
 </script>
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div class="cell"
     role={buttonRole ? 'button' : 'none'}
-    tabindex="{buttonRole ? 0 : -1}" 
-    on:focus={cellFocusHandler(0)}
-    on:blur={cellBlurHandler(0)}
+    tabindex="{buttonRole ? 0 : -1}"
+    style={styles}
+    on:focus={focusHandler}
+    on:blur={blurHandler}
+    on:click={onClick}
 >
     <CodeBackground active={focused} hidden={!buttonRole} animationDelay={buttonAnimationDelay} />
     <slot />
