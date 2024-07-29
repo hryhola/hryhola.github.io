@@ -2,6 +2,8 @@
     import text from './random-code.json'
 
     export let animationDelay = 0;
+    export let hidden = false
+    export let active = false
 
     type ReplacedText = { type: 'regular', value: string } | { type: 'see', value: [string, string] };
 
@@ -52,7 +54,7 @@
 
         return result;
     }
-
+    
     function drawSee(array: string[], index: number): ReplacedText[] {
         const middleIndex = getMiddleIndex(array, index)
 
@@ -69,7 +71,7 @@
     }
 </script>
 
-<div style="animation-delay: {animationDelay}s" class="code-background">
+<div style="animation-delay: {animationDelay}s" class="code-background" class:code-background--active="{active}">
     {#each text as line, i}
         <span>
         {#if isIndexInMiddleFive(text, i)}
@@ -104,6 +106,8 @@
 
         opacity: 0;
 
+        animation: preview 14s;
+        animation-iteration-count: infinite;
         transition: color 2s, opacity 1s;
 
         .see-hover {
@@ -111,7 +115,8 @@
             font-weight: 900;
         }
 
-        &:hover {
+        &--active, &:hover {
+            animation: none;
             color: lightgray;
             opacity: 1;
 
@@ -123,11 +128,6 @@
             .see-regular {
                 display: none;
             }
-        }
-
-        &:not(:hover) {
-            animation: preview 14s;
-            animation-iteration-count: infinite;
         }
     }
 
