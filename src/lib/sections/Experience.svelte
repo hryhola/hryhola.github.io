@@ -3,25 +3,25 @@
 
 </script>
 <section id="experience">
-    <div class="cell"><CodeBackground /></div>
-    <div class="cell"><CodeBackground /></div>
-    <div class="cell"><CodeBackground /></div>
+    <div class="cell"><CodeBackground animationDelay={0} /></div>
+    <div class="cell"><CodeBackground animationDelay={2} /></div>
+    <div class="cell"><CodeBackground animationDelay={4} /></div>
 
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={6} /></div>
     <div class="cell slogan-beginning">I’ve coded things...</div>
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={8} /></div>
 
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={10} /></div>
     <img class="cell " src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={12} /></div>
 
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={14} /></div>
     <div class="cell slogan-end">you people wouldn't even believe</div>
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={16} /></div>
 
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <div class="cell"><CodeBackground animationDelay={18} /></div>
+    <div class="cell"><CodeBackground animationDelay={20} /></div>
+    <div class="cell"><CodeBackground animationDelay={22} /></div>
 </section>
 <style lang="scss">
     #experience {

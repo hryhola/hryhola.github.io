@@ -1,6 +1,10 @@
 <script lang="ts">
     import text from './random-code.json'
 
+    export let animationDelay = 0;
+
+    type ReplacedText = { type: 'regular', value: string } | { type: 'see', value: [string, string] };
+
     const getMiddleIndex = (array: string[], index: number) => {
         const middleIndex = Math.floor(array.length / 2)
         const startOfMiddle = Math.max(0, middleIndex - 2)
@@ -15,14 +19,12 @@
         return index >= startOfMiddle && index <= endOfMiddle
     }
 
-    type ResultType = { type: 'regular', value: string } | { type: 'see', value: [string, string] };
-
-    function processMiddleString(input: string, arr: (string | number)[]): ResultType[] {
+    function processMiddleString(input: string, arr: (string | number)[]): ReplacedText[] {
         const middleStart = Math.floor((input.length - 40) / 2);
         const middleEnd = middleStart + 40;
         const middleString = input.slice(middleStart, middleEnd);
 
-        let result: ResultType[] = [];
+        let result: ReplacedText[] = [];
 
         // Add initial substring before the middle 40 characters
         if (middleStart > 0) {
@@ -51,7 +53,7 @@
         return result;
     }
 
-    function drawSee(array: string[], index: number): ResultType[] {
+    function drawSee(array: string[], index: number): ReplacedText[] {
         const middleIndex = getMiddleIndex(array, index)
 
         const write = (data: (number|string)[]) => processMiddleString(array[index], data)
@@ -67,7 +69,7 @@
     }
 </script>
 
-<div class="code-background">
+<div style="animation-delay: {animationDelay}s" class="code-background">
     {#each text as line, i}
         <span>
         {#if isIndexInMiddleFive(text, i)}
@@ -100,7 +102,9 @@
         font-family: 'Fira Code', monospace;
         font-size: 12px;
 
-        transition: color 2s;
+        opacity: 0;
+
+        transition: color 2s, opacity 1s;
 
         .see-hover {
             display: none;
@@ -109,6 +113,7 @@
 
         &:hover {
             color: lightgray;
+            opacity: 1;
 
             .see-hover {
                 display: inline;
@@ -119,6 +124,18 @@
                 display: none;
             }
         }
+
+        &:not(:hover) {
+            animation: preview 14s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    @keyframes preview {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        20% { opacity: 0; }
+        100% { opacity: 0; }
     }
 
     @keyframes toBlack {
