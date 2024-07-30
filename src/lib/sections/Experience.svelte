@@ -1,6 +1,7 @@
 <script lang="ts">
     import Cell from "$lib/components/experience/Cell.svelte"
     import ExpText from "$lib/components/experience/ExpText.svelte"
+    import { onMount } from "svelte"
 
     let stage: 'preview' | 'chronology' = 'preview'
 
@@ -8,6 +9,34 @@
         stage = 'chronology'
     }
 
+    const scaleRoyImg = () => {
+        const royImg = document.getElementById('roy_batty')! as HTMLImageElement;
+
+        const imgHeight = royImg.height;
+        const imgWidth = royImg.width;
+
+        const wrapperHeight = royImg.parentElement!.clientHeight;
+        const wrapperWidth = royImg.parentElement!.clientWidth;
+
+        const heightDifference = wrapperHeight / imgHeight;
+        const widthDifference = wrapperWidth / imgWidth;
+
+        const maxDifference = Math.max(heightDifference, widthDifference)
+
+        if (maxDifference > 1) {
+            royBattyStyle = `transform: scale(${maxDifference})`
+        } else {
+            royBattyStyle = ''
+        }
+    }
+
+    onMount(() => {
+        scaleRoyImg()
+
+        window.addEventListener('resize', scaleRoyImg)
+    })
+
+    $: royBattyStyle = '';
     $: isPreview = stage === 'preview';
     $: isChronology = stage !== 'preview';
 </script>
@@ -38,7 +67,7 @@
     </Cell>
     <Cell>
         {#if isChronology}<ExpText position="Front-End Developer" where="AdMotion Technologies" />
-        {:else}<img src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />{/if}
+        {:else}<img id="roy_batty" style="{royBattyStyle}" src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />{/if}
     </Cell>
     <Cell buttonRole={isPreview} buttonAnimationDelay={12} onClick={showChronology} justifyContent="start">
         {#if isChronology}<ExpText fontSize="small">TODO: AdMotion Technologies experience</ExpText>{/if}
@@ -93,6 +122,10 @@
                 1fr
                 2fr;
         }
+    }
+
+    #roy_batty {
+        position: absolute;
     }
 
     .slogan {

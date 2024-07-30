@@ -1,5 +1,8 @@
 <script lang="ts">
-    import text from './random-code.json'
+    import textSource from './random-code.json'
+    import { shuffle } from '$lib/scripts/array'
+
+    const text = shuffle(textSource)
 
     export let animationDelay = 0;
     export let hidden = false
