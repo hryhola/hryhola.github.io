@@ -4,9 +4,14 @@
     import { onMount } from "svelte"
 
     let stage: 'preview' | 'chronology' = 'preview'
+    let previewFadeOut = false
 
     const showChronology = () => {
-        stage = 'chronology'
+        previewFadeOut = true
+        
+        setTimeout(() => {
+            stage = 'chronology'
+        }, 250)
     }
 
     const scaleRoyImg = () => {
@@ -36,61 +41,71 @@
         window.addEventListener('resize', scaleRoyImg)
     })
 
+    const createExpander = (row: number) => () => {
+        expandStyle = 'transition: 0.5s; grid-template-rows: 2fr 2fr 1fr 1fr 1fr 2fr';
+    }
+
+    const shrink = () => {
+        expandStyle = 'transition: 0.5s;'
+    }
+
+    $: expandStyle = '';
     $: royBattyStyle = '';
     $: isPreview = stage === 'preview';
     $: isChronology = stage !== 'preview';
 </script>
-<section id="experience" class:show-chronology={isChronology}>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={0} onClick={showChronology} />
-    <Cell buttonRole={isPreview} buttonAnimationDelay={2} onClick={showChronology} />
-    <Cell buttonRole={isPreview} buttonAnimationDelay={4} onClick={showChronology} />
+<section id="experience" style="{expandStyle}" class:show-chronology={isChronology || previewFadeOut}>
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={0} onClick={showChronology} />
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={2} onClick={showChronology} />
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={4} onClick={showChronology} />
 
-    <Cell buttonRole={isPreview} buttonAnimationDelay={6} onClick={showChronology} justifyContent="end" >
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={6} onClick={showChronology} justifyContent="end" >
         {#if isChronology}<ExpText>Pre 2020</ExpText>{/if}
     </Cell>
     <Cell>
         {#if isChronology}<ExpText position="Student" />
-        {:else}<span class="slogan-beginning">I’ve coded things...</span>{/if}
+        {:else}<span class="slogan-beginning" class:fade-out={previewFadeOut}>I’ve coded things...</span>{/if}
     </Cell>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
         {#if isChronology}
-            <ExpText fontSize="small">
+            <ExpText fontSize="small" onFocus={createExpander(0)} onBlur={shrink} mask interactive>
                 At college, my associate’s diploma project was based on the implementation of a serverless freelancer platform using React, Redux, and Firebase.
+                <br />
                 <br />
                 At university, my bachelor's diploma project focused on creating and deploying a platform for real-time, multiplayer interactive activities utilizing Next.js and uWebSockets.
             </ExpText>
         {/if}
     </Cell>
     
-    <Cell buttonRole={isPreview} buttonAnimationDelay={10} onClick={showChronology} justifyContent="end">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={10} onClick={showChronology} justifyContent="end">
         {#if isChronology}<ExpText>Sep 2020 - Jan 2021</ExpText>{/if}
     </Cell>
     <Cell>
         {#if isChronology}<ExpText position="Front-End Developer" where="AdMotion Technologies" />
-        {:else}<img id="roy_batty" style="{royBattyStyle}" src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />{/if}
+        {:else}<img class:fade-out={previewFadeOut} id="roy_batty" style="{royBattyStyle}" src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />{/if}
     </Cell>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={12} onClick={showChronology} justifyContent="start">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={12} onClick={showChronology} justifyContent="start">
         {#if isChronology}<ExpText fontSize="small">TODO: AdMotion Technologies experience</ExpText>{/if}
     </Cell>
     
-    <Cell buttonRole={isPreview} buttonAnimationDelay={14} onClick={showChronology} justifyContent="end">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={14} onClick={showChronology} justifyContent="end">
         {#if isChronology}<ExpText>Jun 2021 - Jul 2024</ExpText>{/if}
     </Cell>
     <Cell>
         {#if isChronology}<ExpText position="Full-Stack Developer" where="Astound Digital" />
-        {:else}<span class="slogan-end">you people wouldn't even believe</span>{/if}
+        {:else}<span class="slogan-end" class:fade-out={previewFadeOut}>you people wouldn't even believe</span>{/if}
     </Cell>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={18} onClick={showChronology} justifyContent="start">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={18} onClick={showChronology} justifyContent="start">
         {#if isChronology}<ExpText fontSize="small">TODO: Astound Digital experience</ExpText>{/if}
     </Cell>
 
-    <Cell buttonRole={isPreview} buttonAnimationDelay={20} onClick={showChronology} justifyContent="end">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={20} onClick={showChronology} justifyContent="end">
         {#if isChronology}<ExpText>Jul 2024 - Now</ExpText>{/if}
     </Cell>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={22} onClick={showChronology}>
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={22} onClick={showChronology}>
         {#if isChronology}<ExpText position="Independent Developer" where="Private Entrepreneur" noAt />{/if}
     </Cell>
-    <Cell buttonRole={isPreview} buttonAnimationDelay={24} onClick={showChronology} justifyContent="start">
+    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={24} onClick={showChronology} justifyContent="start">
         {#if isChronology}<ExpText fontSize="small">TODO: Private Entrepreneur experience</ExpText>{/if}
     </Cell>
 
@@ -124,6 +139,10 @@
         }
     }
 
+    .fade-out {
+        animation: fadeOut 0.25s forwards;
+    }
+
     #roy_batty {
         position: absolute;
     }
@@ -139,5 +158,10 @@
             font-weight: 200;
             letter-spacing: 0.25em;
         }
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
     }
 </style>

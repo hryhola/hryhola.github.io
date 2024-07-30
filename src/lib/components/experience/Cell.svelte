@@ -34,7 +34,7 @@
     <CodeBackground active={focused} hidden={!buttonRole} animationDelay={buttonAnimationDelay} />
     <slot />
 </div>
-<style>
+<style lang="scss">
     .cell {
         display: grid;
         place-items: center;
