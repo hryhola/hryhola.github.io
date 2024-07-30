@@ -1,6 +1,7 @@
 <script lang="ts">
     import Cell from "$lib/components/experience/Cell.svelte"
     import ExpText from "$lib/components/experience/ExpText.svelte"
+    import StudentExp from "$lib/components/experience/text/StudentExp.svelte"
     import { onMount } from "svelte"
 
     let stage: 'preview' | 'chronology' = 'preview'
@@ -63,18 +64,13 @@
         {#if isChronology}<ExpText>Pre 2020</ExpText>{/if}
     </Cell>
     <Cell>
-        {#if isChronology}<ExpText position="Student" />
+        {#if isChronology}
+            <ExpText position="Student" />
+            <StudentExp onBlur={shrink} onFocus={createExpander(0)} mobileOnly/>
         {:else}<span class="slogan-beginning" class:fade-out={previewFadeOut}>I’ve coded things...</span>{/if}
     </Cell>
     <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
-        {#if isChronology}
-            <ExpText fontSize="small" onFocus={createExpander(0)} onBlur={shrink} mask interactive>
-                At college, my associate’s diploma project was based on the implementation of a serverless freelancer platform using React, Redux, and Firebase.
-                <br />
-                <br />
-                At university, my bachelor's diploma project focused on creating and deploying a platform for real-time, multiplayer interactive activities utilizing Next.js and uWebSockets.
-            </ExpText>
-        {/if}
+        {#if isChronology}<StudentExp onBlur={shrink} onFocus={createExpander(0)} desktopOnly />{/if}
     </Cell>
     
     <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={10} onClick={showChronology} justifyContent="end">
@@ -114,6 +110,8 @@
     <Cell />
 </section>
 <style lang="scss">
+    @import '../variables.scss';
+
     #experience {
         display: grid;
         
@@ -129,6 +127,7 @@
         transition: 1.5s ease-out;
 
         &.show-chronology {
+            grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows:
                 2fr
                 1fr
@@ -136,6 +135,14 @@
                 1fr
                 1fr
                 2fr;
+        
+            @media screen and (max-width: $width-tablet) {
+                grid-template-columns: 0.6fr 1fr 1fr;
+            }
+
+            @media screen and (max-width: $width-phone) {
+                grid-template-columns: 0.4fr 1fr 0fr;
+            }
         }
     }
 
