@@ -98,6 +98,8 @@
 </div>
 
 <style lang="scss">
+    @import '../../variables.scss';
+
     .code-background {
         cursor: pointer;
         user-select: none;
@@ -109,13 +111,25 @@
 
         color: gray;
         font-family: 'Fira Code', monospace;
-        font-size: 12px;
+        font-size: 0.75vw;
 
         opacity: 0;
 
         animation: preview 14s;
         animation-iteration-count: infinite;
         transition: color 2s, opacity 1s;
+
+        @media screen and (max-width: $width-tablet-big) {
+            font-size: 1vw;
+        }
+
+        @media screen and (max-width: $height-tablet) {
+            font-size: 1.5vw;
+        }
+
+        @media screen and (max-width: $height-tablet-small) {
+            font-size: 2vw;
+        }
 
         .see-hover {
             display: none;

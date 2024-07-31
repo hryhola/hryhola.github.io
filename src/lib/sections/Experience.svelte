@@ -23,24 +23,32 @@
     }
 
     const scaleRoyImg = () => {
-        const royImg = document.getElementById('roy_batty')! as HTMLImageElement;
+        const royImg = document.getElementById('roy_batty') as HTMLImageElement | undefined;
+
+        if (!royImg) {
+            return
+        }
 
         const imgHeight = royImg.height;
         const imgWidth = royImg.width;
 
-        const wrapperHeight = royImg.parentElement!.clientHeight;
-        const wrapperWidth = royImg.parentElement!.clientWidth;
+        const wrapperHeight = royImg.parentElement?.clientHeight;
+        const wrapperWidth = royImg.parentElement?.clientWidth;
+
+        if (typeof imgHeight !== 'number' ||
+            typeof imgWidth !== 'number' ||
+            typeof wrapperHeight !== 'number' ||
+            typeof wrapperWidth !== 'number'
+        ) {
+            return
+        }
 
         const heightDifference = wrapperHeight / imgHeight;
         const widthDifference = wrapperWidth / imgWidth;
 
         const maxDifference = Math.max(heightDifference, widthDifference)
 
-        if (maxDifference > 1) {
-            royBattyStyle = `transform: scale(${maxDifference})`
-        } else {
-            royBattyStyle = ''
-        }
+        royBattyStyle = `transform: scale(${maxDifference})`
     }
 
     onMount(() => {
@@ -195,6 +203,14 @@
 
         transition: 1.5s ease-out;
 
+        @media screen and (max-width: $width-tablet-big) {
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+    
+        @media screen and (max-width: $height-tablet-small) {
+            grid-template-columns: 0.2fr 2fr 0.2fr;
+        }
+
         &.show-chronology {
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows:
@@ -225,14 +241,34 @@
 
     .slogan {
         &-beginning {
-            font-size: 58px;
+            font-size: 3.9vw;
             font-weight: 600;
         }
 
         &-end {
-            font-size: 21px;
+            font-size: 1.4vw;
             font-weight: 200;
             letter-spacing: 0.25em;
+        }
+
+        @media screen and (max-width: $width-tablet-big) {
+            &-beginning {
+                font-size: 5.75vw;
+            }
+
+            &-end {
+                font-size: 2.1vw;
+            }
+        }
+
+        @media screen and (max-width: $height-tablet-small) {
+            &-beginning {
+                font-size: 9.5vw;
+            }
+
+            &-end {
+                font-size: 3.5vw;
+            }
         }
     }
 
