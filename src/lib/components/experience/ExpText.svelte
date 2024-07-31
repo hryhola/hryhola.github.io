@@ -3,10 +3,11 @@
     export let mobileOnly = false
     export let mask = false
     export let interactive = false
+    export let noAt = false
+    export let dataLabel: string | undefined = undefined
     export let position: string | undefined = undefined
     export let where: string | undefined = undefined
     export let fontSize: 'small' | 'normal' = 'normal'
-    export let noAt = false
     export let onFocus: undefined | (() => void) = undefined
     export let onBlur: undefined | (() => void) = undefined
 </script>
@@ -22,6 +23,7 @@
     on:blur={onBlur}
     tabindex={interactive ? 0 : -1}
     role={interactive ? 'article' : 'none'}
+    data-label="{dataLabel}"
 >
     <slot />
     {#if position}

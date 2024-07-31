@@ -7,7 +7,7 @@
     export let onBlur: () => void | undefined
 </script>
 
-<ExpText fontSize="small" onFocus={onFocus} onBlur={onBlur} mask interactive mobileOnly={mobileOnly} desktopOnly={desktopOnly}>
+<ExpText dataLabel="student-exp" fontSize="small" onFocus={onFocus} onBlur={onBlur} mask interactive mobileOnly={mobileOnly} desktopOnly={desktopOnly}>
     At college, my associate’s diploma project was based on the implementation of a serverless freelancer platform using React, Redux, and Firebase.
     <br />
     <br />

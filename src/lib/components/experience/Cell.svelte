@@ -8,16 +8,30 @@
     export let justifyContent: 'end' | 'start' | undefined = undefined
 
     let focused = false;
+    let self: HTMLDivElement;
 
     const scrollToThis = scroller.createFocusHandler(3)
+
+    const keyPressHandler = (event: KeyboardEvent) => {
+        if (!focused) return
+
+        if (event.key === 'Enter') {
+            onClick()
+            self.blur()
+        }
+    }
 
     const focusHandler = () => {
         scrollToThis();
         focused = true;
+
+        document.addEventListener('keypress', keyPressHandler)
     }
 
     const blurHandler = () => {
         focused = false;
+
+        document.removeEventListener('keypress', keyPressHandler)
     }
 
     $: styles = justifyContent ? `justify-content: ${justifyContent}` : '';
@@ -30,6 +44,7 @@
     on:focus={focusHandler}
     on:blur={blurHandler}
     on:click={onClick}
+    bind:this={self}
 >
     <CodeBackground active={focused} hidden={!buttonRole} animationDelay={buttonAnimationDelay} />
     <slot />
