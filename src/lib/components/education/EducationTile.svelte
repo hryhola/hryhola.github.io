@@ -16,26 +16,14 @@
 
 <div class="edu" itemscope itemtype='https://schema.org/EducationalOccupationalCredential'>
     <div class="edu-image">
-        <img src={'pictures/' + image + '.svg'} alt={imageAlt} />
+        <img src={'logos/' + image + '.svg'} alt={imageAlt} />
     </div>
     <div class="edu-content">
         <h4>
             <span class="edu-content__title" itemprop="name">{title}</span>{#if degreeField}, <span class="edu-content__degree" itemprop="about">{degreeField}</span>{/if}
         </h4>
         <div class="edu-description">
-            <span class="edu-description__publisher" itemscope itemprop="recognizedBy">
-                <span itemprop="name" itemscope itemtype={`https://schema.org/${publisherType}`}>
-                    <span itemprop="name">
-                        {publisherName}
-                    </span>
-                </span>
-            </span>
-
-            {#if teacher}
-                (<span itemprop="provider" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{teacher}</span></span>)
-            {/if}
-
-            {#if yearNewLine}<br />{:else}, {/if}
+            <span class="edu-description__publisher" itemscope itemprop="recognizedBy"><span itemprop="name" itemscope itemtype={`https://schema.org/${publisherType}`}><span itemprop="name">{publisherName}</span></span></span>{#if teacher}&nbsp;(<span class="edu-description__teacher" itemprop="provider" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{teacher}</span></span>){/if}{#if yearNewLine}<br />{:else}, {/if}
         
             <span class="edu-description__year">
                 {#if period}
@@ -61,6 +49,36 @@
     .edu {
         display: flex;
         flex-wrap: nowrap;
+        gap: 12px;
+    }
+
+    .edu-image {
+        display: grid;
+        place-items: center;
+        width: 80px;
+    }
+
+    .edu-content {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+
+        &__title {
+            font-weight: 500;
+        }
+
+        &__degree, h4 {
+            font-weight: 200;
+        }
+    }
+
+    .edu-description {
+        font-weight: 200;
+        font-style: italic;
+
+        &__year {
+            font-style: normal;
+        }
     }
 
     .edu-microdata {
@@ -68,5 +86,6 @@
         height: 0;
         opacity: 0;
         user-select: none;
+        pointer-events: none;
     }
 </style>

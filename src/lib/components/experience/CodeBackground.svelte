@@ -82,7 +82,7 @@
     class:code-background--hidden="{hidden}"
 >
     {#if mobilePreview}
-        <img class="code-background__tap" src="pictures/tap.svg" alt="tap icon"/>
+        <img class="code-background__tap" src="logos/tap.svg" alt="Tap icon"/>
     {/if}
     {#each text as line, i}
         <span>
