@@ -6,7 +6,8 @@
     import AstoundExp from "$lib/components/experience/text/AstoundExp.svelte"
     import IndependentExp from "$lib/components/experience/text/IndependentExp.svelte"
     import { scroller } from "$lib/scripts/SectionsScroller";
-    import { replaceFrValue } from "$lib/scripts/style"
+    import { replaceFrValue } from "$lib/scripts/helpers/style"
+    import { debounce } from "$lib/scripts/helpers/function"
     import { onMount } from "svelte"
 
     let stage: 'preview' | 'chronology' = 'preview'
@@ -54,7 +55,7 @@
     onMount(() => {
         scaleRoyImg()
 
-        window.addEventListener('resize', scaleRoyImg)
+        window.addEventListener('resize', debounce(scaleRoyImg))
     })
 
     const rowIndexMapping =  {
@@ -117,79 +118,84 @@
     $: isPreview = stage === 'preview';
     $: isChronology = stage !== 'preview';
 </script>
-<section id="experience" style="{expandStyle}" class:show-chronology={isChronology || previewFadeOut}>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={0} onClick={showChronology} />
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={2} onClick={showChronology} />
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={4} onClick={showChronology} />
+<section id="experience">
+    <div style="{expandStyle}" class="experience-content" class:show-chronology={isChronology || previewFadeOut}>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={0} onClick={showChronology} />
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={2} onClick={showChronology} />
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={4} onClick={showChronology} />
 
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={6} onClick={showChronology} justifyContent="end" >
-        {#if isChronology}<ExpText>Pre 2020</ExpText>{/if}
-    </Cell>
-    <Cell>
-        {#if isChronology}
-            <ExpText position="Student" />
-            <StudentExp onBlur={shrink} onFocus={studentExpander} mobileOnly/>
-        {:else}
-            <span class="slogan-beginning" class:fade-out={previewFadeOut}>I’ve coded things...</span>
-        {/if}
-    </Cell>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
-        {#if isChronology}<StudentExp onBlur={shrink} onFocus={studentExpander} desktopOnly />{/if}
-    </Cell>
-    
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={10} onClick={showChronology} justifyContent="end">
-        {#if isChronology}<ExpText>Sep 2020 - Jan 2021</ExpText>{/if}
-    </Cell>
-    <Cell>
-        {#if isChronology}
-            <ExpText position="Front-End Developer" where="AdMotion Technologies" />
-            <AdMotionExp onBlur={shrink} onFocus={adMotionExpander} mobileOnly />
-        {:else}
-            <img class:fade-out={previewFadeOut} id="roy_batty" style="{royBattyStyle}" src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />
-        {/if}
-    </Cell>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={12} onClick={showChronology} justifyContent="start">
-        {#if isChronology}<AdMotionExp onBlur={shrink} onFocus={adMotionExpander} desktopOnly />{/if}
-    </Cell>
-    
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={14} onClick={showChronology} justifyContent="end">
-        {#if isChronology}<ExpText>Jun 2021 - Jul 2024</ExpText>{/if}
-    </Cell>
-    <Cell>
-        {#if isChronology}
-            <ExpText position="Full-Stack Developer" where="Astound Digital" />
-            <AstoundExp onBlur={shrink} onFocus={astoundExpander} mobileOnly/>
-        {:else}
-            <span class="slogan-end" class:fade-out={previewFadeOut}>you people wouldn't even believe</span>
-        {/if}
-    </Cell>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={18} onClick={showChronology} justifyContent="start">
-        {#if isChronology}<AstoundExp onBlur={shrink} onFocus={astoundExpander} desktopOnly/>{/if}
-    </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={6} onClick={showChronology} justifyContent="end" >
+            {#if isChronology}<ExpText>Pre 2020</ExpText>{/if}
+        </Cell>
+        <Cell>
+            {#if isChronology}
+                <ExpText position="Student" />
+                <StudentExp onBlur={shrink} onFocus={studentExpander} mobileOnly/>
+            {:else}
+                <span class="slogan-beginning" class:fade-out={previewFadeOut}>I’ve coded things...</span>
+            {/if}
+        </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
+            {#if isChronology}<StudentExp onBlur={shrink} onFocus={studentExpander} desktopOnly />{/if}
+        </Cell>
+        
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={10} onClick={showChronology} justifyContent="end">
+            {#if isChronology}<ExpText>Sep 2020 - Jan 2021</ExpText>{/if}
+        </Cell>
+        <Cell>
+            {#if isChronology}
+                <ExpText position="Front-End Developer" where="AdMotion Technologies" />
+                <AdMotionExp onBlur={shrink} onFocus={adMotionExpander} mobileOnly />
+            {:else}
+                <img class:fade-out={previewFadeOut} id="roy_batty" style="{royBattyStyle}" src="pictures/Blade_Runner.gif" alt="Roy Batty from Blade Runner (1982)" />
+            {/if}
+        </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={12} onClick={showChronology} justifyContent="start">
+            {#if isChronology}<AdMotionExp onBlur={shrink} onFocus={adMotionExpander} desktopOnly />{/if}
+        </Cell>
+        
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={14} onClick={showChronology} justifyContent="end">
+            {#if isChronology}<ExpText>Jun 2021 - Jul 2024</ExpText>{/if}
+        </Cell>
+        <Cell>
+            {#if isChronology}
+                <ExpText position="Full-Stack Developer" where="Astound Digital" />
+                <AstoundExp onBlur={shrink} onFocus={astoundExpander} mobileOnly/>
+            {:else}
+                <span class="slogan-end" class:fade-out={previewFadeOut}>you people wouldn't even believe</span>
+            {/if}
+        </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={18} onClick={showChronology} justifyContent="start">
+            {#if isChronology}<AstoundExp onBlur={shrink} onFocus={astoundExpander} desktopOnly/>{/if}
+        </Cell>
 
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={20} onClick={showChronology} justifyContent="end">
-        {#if isChronology}<ExpText>Jul 2024 - Now</ExpText>{/if}
-    </Cell>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={22} onClick={showChronology}>
-        {#if isChronology}
-            <ExpText position="Independent Developer" where="Private Entrepreneur" noAt />
-            <IndependentExp onBlur={shrink} onFocus={independentExpander} mobileOnly/>
-        {/if}
-    </Cell>
-    <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={24} onClick={showChronology} justifyContent="start">
-        {#if isChronology}
-            <IndependentExp onBlur={shrink} onFocus={independentExpander} desktopOnly/>
-        {/if}
-    </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={20} onClick={showChronology} justifyContent="end">
+            {#if isChronology}<ExpText>Jul 2024 - Now</ExpText>{/if}
+        </Cell>
+        <Cell mobilePreview buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={22} onClick={showChronology}>
+            {#if isChronology}
+                <ExpText position="Independent Developer" where="Private Entrepreneur" noAt />
+                <IndependentExp onBlur={shrink} onFocus={independentExpander} mobileOnly/>
+            {/if}
+        </Cell>
+        <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={24} onClick={showChronology} justifyContent="start">
+            {#if isChronology}
+                <IndependentExp onBlur={shrink} onFocus={independentExpander} desktopOnly/>
+            {/if}
+        </Cell>
 
-    <Cell />
-    <Cell />
-    <Cell />
+        <Cell />
+        <Cell />
+        <Cell />
+    </div>
 </section>
 <style lang="scss">
     @import '../variables.scss';
 
-    #experience {
+    .experience-content {
+        height: 100%;
+        min-height: $min-section-height;
+
         display: grid;
         
         grid-template-columns: 1fr 1fr 1fr;

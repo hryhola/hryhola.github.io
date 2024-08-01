@@ -1,10 +1,11 @@
 <script lang="ts">
     import textSource from './random-code.json'
-    import { shuffle } from '$lib/scripts/array'
+    import { shuffle } from '$lib/scripts/helpers/array'
 
     const text = shuffle(textSource)
 
     export let animationDelay = 0;
+    export let mobilePreview = false
     export let hidden = false
     export let active = false
 
@@ -76,9 +77,13 @@
 
 <div style="animation-delay: {animationDelay}s"
     class="code-background"
+    class:code-background--mobilePreview="{mobilePreview}"
     class:code-background--active="{active}"
     class:code-background--hidden="{hidden}"
 >
+    {#if mobilePreview}
+        <img class="code-background__tap" src="pictures/tap.svg" alt="tap icon"/>
+    {/if}
     {#each text as line, i}
         <span>
         {#if isIndexInMiddleFive(text, i)}
@@ -125,6 +130,38 @@
 
         @media screen and (max-width: $height-tablet) {
             font-size: 1.5vw;
+
+            &--mobilePreview {
+                opacity: 1!important;
+                animation: none!important;
+
+                .code-background__tap {
+                    opacity: 0;
+                    animation: tap 3s;
+                    animation-delay: 5s!important;
+                    animation-iteration-count: infinite;
+                }
+
+                .see-hover {
+                    display: inline!important;
+                    animation: toBlack 3s forwards;
+                }
+
+                .see-regular {
+                    display: none;
+                }
+            }
+
+            &__tap {
+                display: block!important;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+
+                width: 34px;
+                height: 34px;
+            }
         }
 
         @media screen and (max-width: $height-tablet-small) {
@@ -151,6 +188,10 @@
             }
         }
 
+        &__tap {
+            display: none;
+        }
+
         &--hidden {
             display: none!important;
         }
@@ -161,6 +202,15 @@
         10% { opacity: 1; }
         20% { opacity: 0; }
         100% { opacity: 0; }
+    }
+
+    @keyframes tap {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(1.2) }
+        5% { opacity: 1; transform: translate(-50%, -50%) scale(1.2)}
+        25% { opacity: 1; transform: translate(-50%, -50%) scale(1) }
+        45% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) }
+        50%  { opacity: 0; transform: translate(-50%, -50%) scale(1.2) }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2) }
     }
 
     @keyframes toBlack {

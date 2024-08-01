@@ -1,6 +1,6 @@
 <script  lang="ts">
     import { scroller } from "$lib/scripts/SectionsScroller";
-    import { isContactsExpanded } from '$lib/scripts/context'
+    import { isContactsExpanded } from '$lib/scripts/helpers/context'
     import type { MouseEventHandler } from "svelte/elements";
 
     const handleContactsExpand: MouseEventHandler<HTMLAnchorElement> = () => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { isContactsExpanded } from "$lib/scripts/context";
+    import { isContactsExpanded } from "$lib/scripts/helpers/context";
     import ContactItem from "./ContactItem.svelte"
 </script>
 <div id="contacts" aria-hidden="{$isContactsExpanded}" data-is-open={$isContactsExpanded}>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { isContactsExpanded } from "$lib/scripts/context";
+    import { isContactsExpanded } from "$lib/scripts/helpers/context";
     import { scroller } from '$lib/scripts/SectionsScroller';
 
     export let imgSrc: string

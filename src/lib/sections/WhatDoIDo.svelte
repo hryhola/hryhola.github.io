@@ -1,6 +1,6 @@
 <script lang="ts">
     import Title from "$lib/components/what-do-I-do/Title.svelte"
-    import { isLightBulbHover  } from "$lib/scripts/context";
+    import { isLightBulbHover  } from "$lib/scripts/helpers/context";
     import { scroller } from "$lib/scripts/SectionsScroller";
 
     const letBeLight = () => isLightBulbHover.set(true)

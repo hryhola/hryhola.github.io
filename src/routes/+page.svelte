@@ -7,7 +7,7 @@
     import Footer from '$lib/sections/Footer.svelte';
     import { scroller } from '$lib/scripts/SectionsScroller';
     import { onMount } from 'svelte'
-    import { isContactsExpanded } from '$lib/scripts/context'
+    import { isContactsExpanded } from '$lib/scripts/helpers/context'
 
     onMount(() => {
         $isContactsExpanded = window.screen.width > 420;

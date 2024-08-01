@@ -2,7 +2,7 @@
     import PianoKey from '$lib/components/skill-set/PianoKey.svelte'
     import skills from '$lib/components/skill-set/skills.json'
     import { audioContext } from '$lib/scripts/AudioContext'
-    import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/piano'
+    import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/helpers/piano'
     import { onMount } from 'svelte'
     import { scroller } from '$lib/scripts/SectionsScroller'
 

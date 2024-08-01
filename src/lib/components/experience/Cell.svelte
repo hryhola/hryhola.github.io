@@ -2,6 +2,7 @@
     import { scroller } from '$lib/scripts/SectionsScroller'
     import CodeBackground from './CodeBackground.svelte'
 
+    export let mobilePreview = false
     export let buttonRole = false
     export let buttonAnimationDelay = 0
     export let onClick: () => void = () => {}
@@ -46,7 +47,7 @@
     on:click={onClick}
     bind:this={self}
 >
-    <CodeBackground active={focused} hidden={!buttonRole} animationDelay={buttonAnimationDelay} />
+    <CodeBackground mobilePreview={mobilePreview} active={focused} hidden={!buttonRole} animationDelay={buttonAnimationDelay} />
     <slot />
 </div>
 <style lang="scss">
