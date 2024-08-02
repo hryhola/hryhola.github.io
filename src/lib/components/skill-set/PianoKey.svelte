@@ -11,6 +11,8 @@
     export let onBlur: Function | undefined = undefined
     export let disabled: boolean
     export let distance: number = 10
+    
+    let keyNoteDiv: HTMLDivElement
 
     const scrollToThis = scroller.createFocusHandler(2)
 
@@ -23,8 +25,8 @@
         unselectNote()
     }
 
-    const selectNote = () => {
-        if (disabled) return
+    const selectNote = (event?: MouseEvent) => {
+        if (disabled || (event && keyNoteDiv.contains(event.relatedTarget as Node))) return
 
         calculatedNoteBackground = noteBackground || '';
         calculatedNoteColor = noteColor || '';
@@ -32,8 +34,8 @@
         if (onHover) onHover()
     }
 
-    const unselectNote = () => {
-        if (disabled) return
+    const unselectNote = (event?: MouseEvent) => {
+        if (disabled || (event && keyNoteDiv.contains(event.relatedTarget as Node))) return
 
         calculatedNoteBackground = ''
         calculatedNoteColor = ''
@@ -57,6 +59,7 @@
             role="listitem"
             style="width: {distance}%; height: calc({distance}% / 7 + 140px); background: {calculatedNoteBackground};"
             tabindex="{disabled ? -1 : 0}"
+            bind:this={keyNoteDiv}
             on:mouseover={selectNote}
             on:mouseout={unselectNote}
             on:focus={handleFocus}
