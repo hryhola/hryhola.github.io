@@ -50,10 +50,16 @@
         <span itemprop="educationalLevel">{educationalLevel}</span>
     </div>
 </div>
+{#if credentialCategory === 'degree'}
+    <div class="invisible-microdata" itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
+        <span itemprop="name">{publisherName}</span>
+        <span itemprop="location">Lutsk</span>
+    </div>
+{/if}
 <style lang="scss">
     .edu {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: min-content 1fr;
         gap: 12px;
     }
 

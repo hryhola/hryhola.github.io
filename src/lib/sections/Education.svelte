@@ -46,7 +46,9 @@
             <p class="education-academic__article-text">To me, nothing</p>
             <p class="education-academic__article-text">There is no value in degrees obtained from corrupt institutions, with apathetic teachers who care more about creating useless documentation to show fake achievements than actually educating students.</p>
             <p class="education-academic__article-text">Everything I've learned has been learned by myself, not taught. <a href="/about-education">Read more...</a></p>
+            <div class="divider divider--mobile"></div>
         </div>
+
 
         <div class="education-certificates">
             <EducationTile title="JavaScript Frontend Developer"
@@ -173,6 +175,20 @@
 
         font-size: 18px;
         font-family: 'Fira Sans', serif;
+
+        @media screen and (max-width: $width-tablet-big) {
+            gap: 4px;
+        }
+
+        @media screen and (max-width: $width-tablet) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $width-phone-big) {
+            font-size: 14px;
+            flex-flow: column;
+            min-height: 200vh;
+        }
     }
 
     .divider {
@@ -180,6 +196,14 @@
         width: 60%;
         background-color: lightgray;
         align-self: center;
+
+        &--mobile {
+            display: none;
+
+            @media screen and (max-width: $width-phone-big) {
+                display: block;
+            }
+        }
     }
 
     .education-academic, .education-certificates {
@@ -188,6 +212,14 @@
         display: flex;
         flex-flow: column;
         justify-content: space-around;
+
+        @media screen and (max-width: $width-tablet-big) {
+            max-width: 45vw;
+        }
+
+        @media screen and (max-width: $width-phone-big) {
+            max-width: 100vw;
+        }
     }
 
     .education-academic {
