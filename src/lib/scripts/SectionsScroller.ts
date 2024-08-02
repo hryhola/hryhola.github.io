@@ -1,3 +1,4 @@
+import { pushState } from '$app/navigation'
 import type { SwipedEvent } from "swiped-events"
 
 export class SectionsScroller {
@@ -96,15 +97,13 @@ export class SectionsScroller {
           });
     }
 
-    scrollToHash() {
+    scrollToHash(noPushState = false) {
         const index = this.sections.indexOf(location.hash.substring(1))
 
-        if (index !== -1) {
-            this.scrollToSection(index)
-        }
+        this.scrollToSection(index !== -1 ? index : 0, noPushState)
     }
 
-    scrollToCurrentSection() {
+    scrollToCurrentSection(noPushState = false) {
         if (!this.containerElement) {
             console.error('Sections container is not defined!')
             
@@ -119,10 +118,12 @@ export class SectionsScroller {
 
         const section = this.sections[this.currentSection]
 
-        if (section !== 'contacts') {
-            history.pushState({}, '', '#' + section)
-        } else {
-            history.pushState({}, document.title, window.location.pathname + window.location.search)
+        if (!noPushState) {
+            if (section !== 'contacts') {
+                pushState('#' + section, {})
+            } else {
+                pushState(window.location.pathname + window.location.search, {})
+            }
         }
 
         this.containerElement.setAttribute('style', 'top: -' + (this.currentSection * 100) + 'vh')
@@ -130,7 +131,7 @@ export class SectionsScroller {
         this.isScrolling = true
     }
 
-    scrollToSection(number: number) {
+    scrollToSection(number: number, noPushState = false) {
         if (number > this.maxSection || number < this.minSection) {
             console.error(`Got out of range section: ${number}! min: ${this.minSection}, max: ${this.maxSection}`)
             
@@ -139,7 +140,7 @@ export class SectionsScroller {
 
         this.currentSection = number
 
-        this.scrollToCurrentSection()
+        this.scrollToCurrentSection(noPushState)
     }
 
     createFocusHandler(section: number) {

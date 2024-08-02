@@ -6,14 +6,17 @@
     import Education from '$lib/sections/Education.svelte';
     import Footer from '$lib/sections/Footer.svelte';
     import { scroller } from '$lib/scripts/SectionsScroller';
-    import { onMount } from 'svelte'
+    import { onMount, tick } from 'svelte'
     import { isContactsExpanded } from '$lib/scripts/helpers/context'
 
-    onMount(() => {
+    onMount(async () => {
+        await tick();
+        
         $isContactsExpanded = window.screen.width > 420;
 
         scroller.initialize()
         scroller.scrollToHash()
+        window.addEventListener('popstate', () => scroller.scrollToHash(true))
 
         import('swiped-events');
     })
