@@ -5,6 +5,7 @@
     import AdMotionExp from "$lib/components/experience/text/AdMotionExp.svelte"
     import AstoundExp from "$lib/components/experience/text/AstoundExp.svelte"
     import IndependentExp from "$lib/components/experience/text/IndependentExp.svelte"
+    import ExpMicrodata from "$lib/components/experience/text/ExpMicrodata.svelte"
     import { scroller } from "$lib/scripts/SectionsScroller";
     import { replaceFrValue } from "$lib/scripts/helpers/style"
     import { debounce } from "$lib/scripts/helpers/function"
@@ -188,6 +189,7 @@
         <Cell />
         <Cell />
     </div>
+    <ExpMicrodata />
 </section>
 <style lang="scss">
     @import '../variables.scss';
