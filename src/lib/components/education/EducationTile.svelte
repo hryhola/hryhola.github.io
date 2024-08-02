@@ -10,6 +10,8 @@
     export let period: [number, number] | undefined = undefined
     export let published: number | undefined = undefined // For type='course' OR for publisherType='School'
     export let yearNewLine = credentialCategory === 'degree'
+    export let identifier: string | undefined = undefined
+    export let url: string | undefined = undefined
     export let competencyRequired: string[]
     export let educationalLevel: string
 </script>
@@ -20,7 +22,7 @@
     </div>
     <div class="edu-content">
         <h4>
-            <span class="edu-content__title" itemprop="name">{title}</span>{#if degreeField}, <span class="edu-content__degree" itemprop="about">{degreeField}</span>{/if}
+            <span class="edu-content__title" itemprop="name">{#if url}<a href={url} target="_blank" itemscope itemprop="url">{title}</a>{:else}{title}{/if}</span>{#if degreeField}, <span class="edu-content__degree" itemprop="about">{degreeField}</span>{/if}
         </h4>
         <div class="edu-description">
             <span class="edu-description__publisher" itemscope itemprop="recognizedBy"><span itemprop="name" itemscope itemtype={`https://schema.org/${publisherType}`}><span itemprop="name">{publisherName}</span></span></span>{#if teacher}&nbsp;(<span class="edu-description__teacher" itemprop="provider" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{teacher}</span></span>){/if}{#if yearNewLine}<br />{:else}, {/if}
@@ -35,6 +37,9 @@
         </div>
     </div>
     <div class="edu-microdata">
+        {#if identifier}
+            <span itemprop="identifier">{identifier}</span>
+        {/if}
         {#if degreeField}
             <span itemprop="competencyRequired">{degreeField}</span>
         {/if}
@@ -65,6 +70,11 @@
 
         &__title {
             font-weight: 500;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
         }
 
         &__degree, h4 {
@@ -87,5 +97,6 @@
         opacity: 0;
         user-select: none;
         pointer-events: none;
+        position: absolute;
     }
 </style>
