@@ -1,6 +1,7 @@
 <script lang="ts">
     import { scroller } from '$lib/scripts/SectionsScroller'
 
+    export let isLanguage=false
     export let hasBlackKey: boolean | undefined = undefined
     export let noteName: string | undefined = undefined
     export let shortNoteName: string | undefined = undefined
@@ -64,7 +65,13 @@
             <div class="key-note__tail"
                 style="color: {calculatedNoteColor}; {calculatedNoteBackground ? `background: linear-gradient(90deg, transparent, ${calculatedNoteBackground});` : ''}"
             >
-                <span class="key-note__tail_text">{noteName}</span>
+                <span class="key-note__tail_text" itemprop={isLanguage ? 'knowsLanguage' : 'knowsAbout'}>
+                    {#if isLanguage}
+                        <span itemscope itemtype="http://schema.org/ComputerLanguage">{noteName}</span>
+                    {:else}
+                        {noteName}
+                    {/if}
+                </span>
                 <span class="key-note__tail_short_text">{shortNoteName}</span>
             </div>
         </div>

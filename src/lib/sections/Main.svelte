@@ -10,7 +10,7 @@
         isHeaderVisible = (event.target as HTMLDivElement).scrollTop === 0
     }
 </script>
-<section on:scroll={handleSectionScroll} itemscope itemtype="http://schema.org/Person">
+<section on:scroll={handleSectionScroll}>
     <HeaderQuote isVisible={isHeaderVisible} />
     <main class="container">
         <Name />

@@ -44,6 +44,7 @@
             {#each skills as skill, i}
                 <PianoKey
                     noteName={skill.name}
+                    isLanguage={skill.isLanguage}
                     shortNoteName={skill.shortName}
                     noteBackground={skill.background}
                     noteColor={skill.color}

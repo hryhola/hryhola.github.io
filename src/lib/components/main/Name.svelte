@@ -1,3 +1,7 @@
+<script>
+    import SkillsMicrodata from "./SkillsMicrodata.svelte"
+
+</script>
 <h1 itemprop="name">
     <span itemprop="givenName">Vladyslav</span>
     <br />
@@ -6,18 +10,18 @@
 <h2 class="header-normal">
     <span class="typing">
         <span itemprop="jobTitle">Software Engineer</span>.
-        <span itemprop="hasOccupation">Private entrepreneur</span>.
+        <span itemprop="hasOccupation" itemscope itemtype="http://schema.org/Occupation"><span itemprop="name">Private entrepreneur</span><SkillsMicrodata /></span>.
     </span>
 </h2>
 <div class="header-small">
     <h2>
         <span class="typing typing-job">
-            <span itemprop="jobTitle">Software Engineer</span>.
+            <span>Software Engineer</span>.
         </span>
     </h2>
     <h2>
         <span class="typing typing-occupation">
-            <span itemprop="hasOccupation">Private entrepreneur</span>.
+            <span>Private entrepreneur</span>.
         </span>
     </h2>
 </div>

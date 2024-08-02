@@ -22,7 +22,7 @@
     })
 </script>
 
-<div class="sections">
+<div class="sections" itemscope itemtype="http://schema.org/Person">
     <Main />
     <WhatDoIDo />
     <SkillSet />

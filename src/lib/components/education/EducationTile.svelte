@@ -16,7 +16,7 @@
     export let educationalLevel: string
 </script>
 
-<div class="edu" itemscope itemtype='https://schema.org/EducationalOccupationalCredential'>
+<div class="edu" itemprop="hasCredential" itemscope itemtype='https://schema.org/EducationalOccupationalCredential'>
     <div class="edu-image">
         <img src={'logos/' + image + '.svg'} alt={imageAlt} />
     </div>
@@ -36,7 +36,7 @@
             </span>
         </div>
     </div>
-    <div class="edu-microdata">
+    <div class="invisible-microdata">
         {#if identifier}
             <span itemprop="identifier">{identifier}</span>
         {/if}
@@ -89,14 +89,5 @@
         &__year {
             font-style: normal;
         }
-    }
-
-    .edu-microdata {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        user-select: none;
-        pointer-events: none;
-        position: absolute;
     }
 </style>
