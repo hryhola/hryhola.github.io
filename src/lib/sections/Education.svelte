@@ -176,7 +176,7 @@
         padding: 30px;
 
         font-size: 18px;
-        font-family: 'Fira Sans', serif;
+        font-family: 'Fira Sans', sans-serif;
 
         @media screen and (max-width: $width-tablet-big) {
             gap: 4px;
