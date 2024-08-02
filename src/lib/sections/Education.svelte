@@ -1,6 +1,8 @@
 <script>
     import EducationTile from "$lib/components/education/EducationTile.svelte"
+    import { scroller } from "$lib/scripts/SectionsScroller";
 
+    const scrollToThis = scroller.createFocusHandler(4)
 </script>
 <section id="education">
     <div class="container">
@@ -45,7 +47,7 @@
             <h4 class="education-academic__article-title">What do these academic degrees mean?</h4>
             <p class="education-academic__article-text">To me, nothing</p>
             <p class="education-academic__article-text">There is no value in degrees obtained from corrupt institutions, with apathetic teachers who care more about creating useless documentation to show fake achievements than actually educating students.</p>
-            <p class="education-academic__article-text">Everything I've learned has been learned by myself, not taught. <a href="/about-education">Read more...</a></p>
+            <p class="education-academic__article-text">Everything I've learned has been learned by myself, not taught. <a on:focus={scrollToThis} href="/about-education">Read more...</a></p>
             <div class="divider divider--mobile"></div>
         </div>
 

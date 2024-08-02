@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { scroller } from "$lib/scripts/SectionsScroller";
+
     export let image: string
     export let imageAlt: string
     export let credentialCategory: 'degree' | 'certificate' 
@@ -14,6 +16,8 @@
     export let url: string | undefined = undefined
     export let competencyRequired: string[]
     export let educationalLevel: string
+
+    const scrollToThis = scroller.createFocusHandler(4)
 </script>
 
 <div class="edu" itemprop="hasCredential" itemscope itemtype='https://schema.org/EducationalOccupationalCredential'>
@@ -22,7 +26,7 @@
     </div>
     <div class="edu-content">
         <h4>
-            <span class="edu-content__title" itemprop="name">{#if url}<a href={url} target="_blank" itemscope itemprop="url">{title}</a>{:else}{title}{/if}</span>{#if degreeField}, <span class="edu-content__degree" itemprop="about">{degreeField}</span>{/if}
+            <span class="edu-content__title" itemprop="name">{#if url}<a on:focus={scrollToThis} href={url} target="_blank" itemscope itemprop="url">{title}</a>{:else}{title}{/if}</span>{#if degreeField}, <span class="edu-content__degree" itemprop="about">{degreeField}</span>{/if}
         </h4>
         <div class="edu-description">
             <span class="edu-description__publisher" itemscope itemprop="recognizedBy"><span itemprop="name" itemscope itemtype={`https://schema.org/${publisherType}`}><span itemprop="name">{publisherName}</span></span></span>{#if teacher}&nbsp;(<span class="edu-description__teacher" itemprop="provider" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{teacher}</span></span>){/if}{#if yearNewLine}<br />{:else}, {/if}
