@@ -182,7 +182,7 @@
         @media screen and (max-width: $width-tablet-small) {
             padding: 20px;
             bottom: 0;
-            height: 50vh;
+            height: calc(50 * var(--vh));
             width: 100%;
             --gradient-deg: 180deg;
             --gradient-shadow-x: 0px;

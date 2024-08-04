@@ -62,7 +62,7 @@
 
         .crop-overflow {
             overflow: hidden;
-            max-height: 100vh;
+            max-height: var(--fullHeight);
             min-height: $min-section-height;
         }
 
@@ -84,7 +84,7 @@
 
         article {
             width: 50%;
-            height: 100vh;
+            height: var(--fullHeight);
             padding: 5% 0 5% 5%;
 
             &[data-is-light="true"] .light-rays{

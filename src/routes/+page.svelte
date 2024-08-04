@@ -8,15 +8,22 @@
     import { scroller } from '$lib/scripts/SectionsScroller';
     import { onMount, tick } from 'svelte'
     import { isContactsExpanded } from '$lib/scripts/helpers/context'
+    import { setVhVariable } from '$lib/scripts/helpers/style'
+    import { debounce } from '$lib/scripts/helpers/function'
 
     onMount(async () => {
-        await tick();
-        
-        $isContactsExpanded = window.screen.width > 420;
+        await tick()
+
+        setVhVariable()
+
+        $isContactsExpanded = window.screen.width > 420
 
         scroller.initialize()
         scroller.scrollToHash()
+    
         window.addEventListener('popstate', () => scroller.scrollToHash(true))
+        window.addEventListener('resize', debounce(setVhVariable))
+        window.addEventListener('orientationchange', setVhVariable)
 
         import('swiped-events');
     })

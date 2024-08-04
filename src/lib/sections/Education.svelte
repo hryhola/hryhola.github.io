@@ -189,7 +189,7 @@
         @media screen and (max-width: $width-phone-big) {
             font-size: 14px;
             flex-flow: column;
-            min-height: 200vh;
+            min-height: calc(200 * var(--vh));
         }
     }
 

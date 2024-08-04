@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
+:root {
+    --vh: 1vh;
+    --fullHeight: calc(var(--vh, 1vh) * 100)
+}
+
+html {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,7 +19,7 @@
 }
 
 section {
-    height: 100vh;
+    height: var(--fullHeight);
     width: 100%;
     overflow: hidden auto;
 }

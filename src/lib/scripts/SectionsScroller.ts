@@ -103,7 +103,7 @@ export class SectionsScroller {
         this.scrollToSection(index !== -1 ? index : 0, noPushState)
     }
 
-    scrollToCurrentSection(noPushState = false) {
+    scrollToCurrentSection(noPushState = false, noAnimationScroll = false) {
         if (!this.containerElement) {
             console.error('Sections container is not defined!')
             
@@ -126,9 +126,11 @@ export class SectionsScroller {
             }
         }
 
-        this.containerElement.setAttribute('style', 'top: -' + (this.currentSection * 100) + 'vh')
+        if (!noAnimationScroll) {
+            this.isScrolling = true
+        }
 
-        this.isScrolling = true
+        this.containerElement.setAttribute('style', 'top: calc(-1 * var(--vh) * ' + (this.currentSection * 100) + ')')
     }
 
     scrollToSection(number: number, noPushState = false) {
@@ -138,9 +140,11 @@ export class SectionsScroller {
             return
         }
 
+        const noAnimationScroll = number === this.currentSection;
+
         this.currentSection = number
 
-        this.scrollToCurrentSection(noPushState)
+        this.scrollToCurrentSection(noPushState, noAnimationScroll)
     }
 
     createFocusHandler(section: number) {

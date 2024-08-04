@@ -57,6 +57,7 @@
         scaleRoyImg()
 
         window.addEventListener('resize', debounce(scaleRoyImg))
+        window.addEventListener('orientationchange', debounce(scaleRoyImg))
     })
 
     const rowIndexMapping =  {

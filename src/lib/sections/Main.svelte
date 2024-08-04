@@ -53,7 +53,7 @@
 
         img {
             z-index: 0;
-            height: 90vh;
+            height: calc(90 * var(--vh));
             min-height: $min-section-height;
             filter: saturate(0);
         }

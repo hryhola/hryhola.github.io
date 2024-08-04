@@ -30,3 +30,9 @@ export function replaceFrValue(initialFrValues: number[], replaceIndex: number, 
     // Return the updated grid-template-rows value as a string
     return adjustedFrValues.map(val => `${val}fr`).join(' ');
 }
+
+export function setVhVariable() {
+    const oneVh = `${window.innerHeight / 100}px`
+
+    document.documentElement.style.setProperty('--vh', oneVh)
+}
