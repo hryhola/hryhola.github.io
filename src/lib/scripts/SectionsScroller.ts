@@ -1,8 +1,11 @@
 import { pushState } from '$app/navigation'
 import type { SwipedEvent } from "swiped-events"
+import { debounce } from './helpers/function';
+
+const widthPhoneBig = 575;
 
 export class SectionsScroller {
-    readonly sections = [
+    private sections = [
         'contacts',
         'what-do-I-do',
         'skill-set',
@@ -12,7 +15,9 @@ export class SectionsScroller {
     ]
 
     readonly minSection = 0
-    readonly maxSection = this.sections.length - 1
+    get maxSection() {
+        return this.sections.length - 1;
+    }
 
     private currentSection = 0
     private isScrolling = false
@@ -74,6 +79,31 @@ export class SectionsScroller {
         }, 50)
     }
 
+    private setSections() {
+        if (window.innerWidth <= widthPhoneBig) {
+            this.sections = [
+                'contacts',
+                'what-do-I-do',
+                'skill-set',
+                'experience',
+                'education',
+                'certificates',
+                'cv'
+            ]
+        } else {
+            this.sections = [
+                'contacts',
+                'what-do-I-do',
+                'skill-set',
+                'experience',
+                'education',
+                'cv'
+            ]
+        }
+
+        this.scrollToHash(false)
+    }
+
     initialize() {
         this.containerElement = document.querySelector('.sections') as HTMLDivElement;
         this.sectionsElements = [...this.containerElement.querySelectorAll('section')] as HTMLDivElement[];
@@ -81,6 +111,10 @@ export class SectionsScroller {
         this.containerElement.addEventListener('transitionend', () => {
             this.isScrolling = false
         })
+
+        this.setSections();
+
+        window.addEventListener('resize', debounce(this.setSections.bind(this)));
 
         document.addEventListener('wheel', (event) => {
             if (event.deltaY === 0 || this.isScrolling) return
@@ -94,11 +128,17 @@ export class SectionsScroller {
             if (event.detail.dir === 'left' || event.detail.dir === 'right') return
 
             this.handleScroll(event.detail.dir === 'down')
-          });
+        });
     }
 
     scrollToHash(noPushState = false) {
-        const index = this.sections.indexOf(location.hash.substring(1))
+        let sectionName = location.hash.substring(1);
+
+        if (sectionName === 'certificates' && !this.sections.includes(sectionName)) {
+            sectionName = 'education'
+        }
+
+        const index = this.sections.indexOf(sectionName)
 
         this.scrollToSection(index !== -1 ? index : 0, noPushState)
     }
