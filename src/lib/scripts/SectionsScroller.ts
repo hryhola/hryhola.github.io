@@ -170,6 +170,8 @@ export class SectionsScroller {
             this.isScrolling = true
         }
 
+        document.dispatchEvent(new Event('section-scroll'))
+
         this.containerElement.setAttribute('style', 'top: calc(-1 * var(--vh) * ' + (this.currentSection * 100) + ')')
     }
 

@@ -5,6 +5,7 @@
     import Experience from '$lib/sections/Experience.svelte';
     import Education from '$lib/sections/Education.svelte';
     import Footer from '$lib/sections/Footer.svelte';
+    import SectionsPointer from '$lib/components/SectionsPointer.svelte';
     import { scroller } from '$lib/scripts/SectionsScroller';
     import { onMount, tick } from 'svelte'
     import { isContactsExpanded } from '$lib/scripts/helpers/context'
@@ -28,7 +29,7 @@
         import('swiped-events');
     })
 </script>
-
+<SectionsPointer />
 <div class="sections" itemscope itemtype="http://schema.org/Person">
     <Main />
     <WhatDoIDo />
