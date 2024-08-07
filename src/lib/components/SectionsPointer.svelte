@@ -4,11 +4,19 @@
 
     let self: HTMLDivElement;
     let sectionId = 'contacts';
+    let hidden = false;
+    let hideTimeout: number | null = null;
 
     function setActiveBullet() {
-        sectionId = location.hash.substring(1) || 'contacts';
-
         if (self) {
+            hidden = false;
+
+            if (typeof hideTimeout === 'number') clearTimeout(hideTimeout)
+            
+            sectionId = location.hash.substring(1) || 'contacts';
+
+            if (sectionId !== 'contacts') setTimeout(() => { hidden = true; }, 500);
+
             [...self.children].forEach(element => {
                 if (element instanceof HTMLDivElement) {
                     if (element.dataset.sectionId === sectionId) {
@@ -29,7 +37,11 @@
     $: if($navigating) setActiveBullet();
 </script>
 
-<div class="sections-pointer" class:sections-pointer--invert={sectionId === 'what-do-I-do'} bind:this={self}>
+<div class="sections-pointer"
+    class:sections-pointer--invert={sectionId === 'what-do-I-do'}
+    class:sections-pointer--hidden={hidden}
+    bind:this={self}
+>
     <div class="sections-pointer__bullet sections-pointer__bullet--filled" data-section-id="contacts"></div>
     <div class="sections-pointer__bullet" data-section-id="what-do-I-do"></div>
     <div class="sections-pointer__bullet" data-section-id="skill-set"></div>
@@ -47,6 +59,8 @@
         right: 5px;
         top: 50%;
         transform: translate(0, -50%);
+        opacity: 1;
+        transition: opacity 1s;
 
         --bg: white;
         --border: black;
@@ -56,6 +70,10 @@
             --bg: black;
             --border: white;
             --active: white;
+        }
+
+        &--hidden {
+            opacity: 0;
         }
 
         &__bullet {
