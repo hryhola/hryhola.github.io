@@ -38,14 +38,14 @@
     <meta property="og:title" content="Vladyslav Hryhola – Software Engineer & Private Entrepreneur" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Experienced Software Engineer with a passion for web development. Proficient in JavaScript, React, and other technologies. Check out my portfolio and let's collaborate!" />
-    <meta property="og:image" content="https://hryhola.github.io/picrures/vladyslav_hryhola_profile.jpg" />
+    <meta property="og:image" content="https://hryhola.github.io/pictures/vladyslav_hryhola_profile.jpg" />
     <meta property="og:url" content="https://hryhola.github.io/" />
     <meta property="og:site_name" content="Vladyslav Hryhola" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@VladHryhola">
     <meta name="twitter:title" content="Vladyslav Hryhola - Software Engineer & Private Entrepreneur">
     <meta name="twitter:description" content="Experienced Software Engineer seeking new challenges. Proficient in JavaScript, React, and Node.js. Let's build something great together!">
-    <meta name="twitter:image" content="https://hryhola.github.io/picrures/vladyslav_hryhola_profile.jpg">
+    <meta name="twitter:image" content="https://hryhola.github.io/pictures/vladyslav_hryhola_profile.jpg">
 </svelte:head>
 <SectionsPointer />
 <div class="sections" itemscope itemtype="http://schema.org/Person">
