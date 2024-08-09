@@ -43,6 +43,8 @@
         display: grid;
         grid-template-rows: 0fr;
         transition: 0.5s ease-out;
+        position: relative;
+        z-index: 1;
 
         font-family: "Fira Sans", sans-serif;
         font-size: 18px;
@@ -67,10 +69,6 @@
             grid-template-columns: min-content min-content;
             align-items: start;
             gap: 15px 0;
-            
-            @media screen and (max-width: $width-phone) {
-                grid-template-columns: min-content 1fr;
-            }
         }
     }
 </style>

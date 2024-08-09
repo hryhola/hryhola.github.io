@@ -17,8 +17,6 @@
 
         setVhVariable()
 
-        $isContactsExpanded = window.screen.width > 420
-
         scroller.initialize()
         scroller.scrollToHash()
     

@@ -44,7 +44,8 @@
     nav {
         font-family: "Fira Code", monospace;
         font-size: 18px;
-
+        position: relative;
+        z-index: 1;
 
         @media screen and (max-width: $width-tablet) {
             font-size: $font-size-tablet;

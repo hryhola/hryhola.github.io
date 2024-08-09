@@ -62,8 +62,14 @@
             min-height: $min-section-height;
         }
 
-        @media (max-width: 1000px) {
-            visibility: hidden;
+        @media (max-width: $width-tablet) {
+            left: 0;
+            opacity: 0.2;
+            position: absolute;
+
+            :global(.dude) {
+                height: calc(70 * var(--vh));
+            }
         }
     }
 </style>

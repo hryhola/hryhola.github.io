@@ -84,7 +84,7 @@
         >
             <img height="16" src="logos/copy.svg" alt="Copy" />
         </button>
-        <span role="tooltip" {...tooltipAttributes} bind:this={tooltip} class="tooltip">Copied!</span>
+        <span role="tooltip" {...tooltipAttributes} bind:this={tooltip} class="tooltip"><span class="tooltip__text">Copied&nbsp;</span>✓</span>
     </div>
 </dd>
 
@@ -115,6 +115,14 @@
             animation-duration: 1s;
             animation-play-state: running;
         }
+
+        @media screen and (max-width: $width-phone) {
+            margin-left: 4px;
+
+            &__text {
+                display: none;
+            }
+        }
     }
 
     img {
@@ -127,6 +135,7 @@
         color: white;
         transition: 0.2s;
         outline-offset: 4px;
+        text-wrap: nowrap;
 
         &[target='_blank']:hover {
             text-decoration: underline;
@@ -135,6 +144,14 @@
         &:focus {
             outline: 1px solid white;
             outline-offset: 0px;
+        }
+
+        @media screen and (max-width: $width-tablet) {
+            margin-right: 0px;
+        }
+
+        @media screen and (max-width: $width-phone-small) {
+            font-size: calc($font-size-phone * 0.9);
         }
     }
 
@@ -156,6 +173,8 @@
         &:hover + dd .copy-wrapper button {
             width: 30px;
         }
+
+        
     }
 
     dd {
@@ -178,6 +197,10 @@
                 width: 30px;
                 outline: 1px solid white;
                 outline-offset: -4px;
+            }
+
+            @media screen and (max-width: $width-tablet) {
+                width: 30px;
             }
         }
 
