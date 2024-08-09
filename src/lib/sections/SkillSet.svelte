@@ -1,5 +1,6 @@
 <script lang="ts">
     import PianoKey from '$lib/components/skill-set/PianoKey.svelte'
+    import Image from '$lib/components/Image.svelte'
     import skills from '$lib/components/skill-set/skills.json'
     import { audioContext } from '$lib/scripts/AudioContext'
     import { getKeyFile, shouldRenderBlackKey, getKeyWidth as getKeyDistance } from '$lib/scripts/helpers/piano'
@@ -38,7 +39,11 @@
 <section id="skill-set">
     <div class="container">
         <div class="piano-dude">
-            <img src="pictures/Piano_Dude.png" alt="A man playing piano">
+            <Image className="dude-playing"
+                alt="Vladyslav plays the piano"
+                lqSrc="pictures/Vladyslav_Hryhola_Plays_Piano_LQ.svg"
+                hqSrc="pictures/Vladyslav_Hryhola_Plays_Piano.png"
+            />
         </div>
         <div role="{skillPianoDisabled ? 'button' : 'list'}" class="skills-keys" data-disabled="{skillPianoDisabled}" on:click|once={() => { skillPianoDisabled = false; }}>
             {#each skills as skill, i}
@@ -114,7 +119,7 @@
         align-content: center;
         flex-wrap: nowrap;
         
-        img {
+        :global(.dude-playing) {
             width: 100%;
             transform: translate(-50px);
         }
@@ -125,7 +130,7 @@
             align-items: flex-start;
             justify-content: center;
 
-            img {
+            :global(.dude-playing) {
                 height: 100%;
                 width: auto;
                 transform: rotate(90deg) translate(-50px) scale(2);

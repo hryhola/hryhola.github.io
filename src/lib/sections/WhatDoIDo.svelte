@@ -1,7 +1,10 @@
 <script lang="ts">
     import Title from "$lib/components/what-do-I-do/Title.svelte"
+    import Image from "$lib/components/Image.svelte";
     import { isLightBulbHover  } from "$lib/scripts/helpers/context";
     import { scroller } from "$lib/scripts/SectionsScroller";
+
+    let hqImageLoaded = false
 
     const letBeLight = () => isLightBulbHover.set(true)
     const letBeDark = () => isLightBulbHover.set(false)
@@ -16,8 +19,13 @@
 <section id="what-do-I-do">
     <div class="crop-overflow">
         <div class="container">
-            <div class="dude-wrapper">
-                <img src="pictures/Dude_Standing.png" alt="Dude" />
+            <div class="dude-wrapper" class:dude-wrapper--hqLoaded={hqImageLoaded}>
+                <Image className="dude-standing"
+                    lqSrc="pictures/Vladyslav_Hryhola_Standing_Desk_LQ.jpg" 
+                    hqSrc="pictures/Vladyslav_Hryhola_Standing_Desk.png"
+                    onHqLoaded={() => { hqImageLoaded = true }}
+                    alt="Vladyslav works at a standing desk"
+                />
             </div>
 
             <article data-is-light={$isLightBulbHover}>
@@ -74,11 +82,17 @@
         .dude-wrapper {
             overflow: hidden;
             width: 50%;
+            display: grid;
+            align-items: end;
 
-            img {
-                position: relative;
-                z-index: 2;
-                filter: saturate(0);
+            :global(.dude-standing) {
+                width: 100%;
+            }
+
+            &--hqLoaded {
+                :global(.dude-standing) {
+                    z-index: 2;
+                }
             }
         }
 

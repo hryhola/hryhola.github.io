@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Image from "$lib/components/Image.svelte"
     import Contacts from "$lib/components/main/Contacts.svelte";
     import HeaderQuote from "$lib/components/main/HeaderQuote.svelte";
     import Name from "$lib/components/main/Name.svelte";
@@ -17,7 +18,11 @@
         <Navigation />
         <Contacts />
         <div class="dude-wrapper">
-            <img class="dude" src="pictures/Dude.png" alt="dude" />
+            <Image className="dude"
+                lqSrc="pictures/Vladyslav_Hryhola_LQ.jpg" 
+                hqSrc="pictures/Vladyslav_Hryhola.jpg" 
+                alt="Vladyslav Hryhola"
+            />
         </div>
     </main>
 </section>
@@ -51,11 +56,10 @@
         min-width: 50%;
         justify-content: center;
 
-        img {
+        :global(.dude) {
             z-index: 0;
             height: calc(90 * var(--vh));
             min-height: $min-section-height;
-            filter: saturate(0);
         }
 
         @media (max-width: 1000px) {
