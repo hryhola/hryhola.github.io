@@ -8,7 +8,6 @@
     import SectionsPointer from '$lib/components/SectionsPointer.svelte';
     import { scroller } from '$lib/scripts/SectionsScroller';
     import { onMount, tick } from 'svelte'
-    import { isContactsExpanded } from '$lib/scripts/helpers/context'
     import { setVhVariable } from '$lib/scripts/helpers/style'
     import { debounce } from '$lib/scripts/helpers/function'
 
