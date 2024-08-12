@@ -52,6 +52,10 @@
 
         opacity: 0;
 
+        :global(strong) {
+            font-weight: 400;
+        }
+
         @media screen and (max-width: $width-desktop) {
             font-size: 16px;
         }

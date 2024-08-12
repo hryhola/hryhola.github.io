@@ -8,5 +8,8 @@
 </script>
 
 <ExpText dataLabel="independent-exp" fontSize="small" onFocus={onFocus} onBlur={onBlur} mask interactive mobileOnly={mobileOnly} desktopOnly={desktopOnly}>
-    TODO: Independent Exp Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quaerat quibusdam soluta illum dolore quod labore placeat, nesciunt, ut, enim quo dicta! Nulla, id explicabo? Quas beatae assumenda iste facilis.
+    Focused on my own side projects.
+    <br />
+    <br />
+    Something could be coming soon 👀
 </ExpText>

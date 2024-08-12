@@ -53,6 +53,7 @@
 <style lang="scss">
     .cell {
         display: grid;
+        grid-template-columns: 1fr;
         place-items: center;
         border: 0.5px solid lightgray;
         font-family: 'Fira Sans', sans-serif;

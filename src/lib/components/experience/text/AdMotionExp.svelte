@@ -8,5 +8,11 @@
 </script>
 
 <ExpText dataLabel="adMotion-exp" fontSize="small" onFocus={onFocus} onBlur={onBlur} mask interactive mobileOnly={mobileOnly} desktopOnly={desktopOnly}>
-    TODO: AdMotion Exp Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quaerat quibusdam soluta illum dolore quod labore placeat, nesciunt, ut, enim quo dicta! Nulla, id explicabo? Quas beatae assumenda iste facilis.
+    While working at this start-up, my work primarily focused on writing the <strong>frontend for smart contracts</strong> on the Ethereum network using React and Redux as the main tools.
+    <br />
+    <br />
+    Another responsibility I had was creating and maintaining the <strong>wallet-connector</strong> module, which allowed the website to be used with any popular wallet, such as Metamask, Coinbase, Fortmatic, Portis, Squarelink, and others.
+    <br />
+    <br />
+    Additionally, my job occasionally included gathering information on the backend (Node, PHP) based on certain criteria from the blockchain.
 </ExpText>

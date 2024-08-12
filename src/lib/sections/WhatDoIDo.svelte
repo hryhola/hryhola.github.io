@@ -53,7 +53,7 @@
                         and most importantly <strong>analytical thinking</strong>.
                     </p>
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark} on:blur={letBeDark}>Fixed to improve the world I live in.</p>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark} on:blur={letBeDark}><q>The beauty of engineering lies in finding elegant solutions to complex problems</q> – Henry Petroski.</p>
                 </div>
             </article>
         </div>
@@ -182,6 +182,10 @@
         
             &:nth-of-type(4) {
                 text-shadow: -18px 14px 16px black;
+            }
+
+            q {
+                font-style: italic;
             }
         }
 
