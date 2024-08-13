@@ -21,7 +21,6 @@ export class SectionsScroller {
 
     private currentSection = 0
     private isScrolling = false
-    private onWheelHandlerDebounce?: number;
 
     private containerElement?: HTMLDivElement;
     private sectionsElements?: HTMLDivElement[]
@@ -59,24 +58,18 @@ export class SectionsScroller {
     private handleScroll(isScrollUp: boolean) {
         if (this.isScrolling || !this.isCurrentSectionScrolled(isScrollUp)) return
 
-        if (typeof this.onWheelHandlerDebounce === 'number') {
-            clearTimeout(this.onWheelHandlerDebounce)
-        }
-
         const isScrollDown = !isScrollUp
 
-        this.onWheelHandlerDebounce = setTimeout(() => {
-            const forbiddenScrollDown = isScrollDown && this.currentSection === this.maxSection
-            const forbiddenScrollUp = isScrollUp && this.currentSection === this.minSection
+        const forbiddenScrollDown = isScrollDown && this.currentSection === this.maxSection
+        const forbiddenScrollUp = isScrollUp && this.currentSection === this.minSection
 
-            if (forbiddenScrollDown || forbiddenScrollUp || !this.isCurrentSectionScrolled(isScrollUp)) {
-                return
-            }
+        if (forbiddenScrollDown || forbiddenScrollUp || !this.isCurrentSectionScrolled(isScrollUp)) {
+            return
+        }
 
-            this.currentSection = this.getNextSection(isScrollUp)
+        this.currentSection = this.getNextSection(isScrollUp)
 
-            this.scrollToCurrentSection()
-        }, 50)
+        this.scrollToCurrentSection()
     }
 
     private setSections() {
