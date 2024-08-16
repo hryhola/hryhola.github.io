@@ -110,12 +110,16 @@ export class SectionsScroller {
         window.addEventListener('resize', debounce(this.setSections.bind(this)));
 
         document.addEventListener('wheel', (event) => {
+            if (location.href.includes('about-education')) return
+
             if (event.deltaY === 0 || this.isScrolling) return
     
             this.handleScroll(event.deltaY < 0)
         })
 
         document.addEventListener('swiped', (e) => {
+            if (location.href.includes('about-education')) return
+
             const event = e as SwipedEvent
             
             if (event.detail.dir === 'left' || event.detail.dir === 'right') return
