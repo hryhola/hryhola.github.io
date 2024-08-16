@@ -1,6 +1,6 @@
 import { pushState } from '$app/navigation'
 import type { SwipedEvent } from "swiped-events"
-import { debounce } from './helpers/function';
+import { debounce, throttle } from './helpers/function';
 
 const widthPhoneBig = 575;
 
@@ -109,13 +109,13 @@ export class SectionsScroller {
 
         window.addEventListener('resize', debounce(this.setSections.bind(this)));
 
-        document.addEventListener('wheel', (event) => {
+        document.addEventListener('wheel', throttle((event: WheelEvent) => {
             if (location.href.includes('about-education')) return
 
             if (event.deltaY === 0 || this.isScrolling) return
     
             this.handleScroll(event.deltaY < 0)
-        })
+        }, 1000))
 
         document.addEventListener('swiped', (e) => {
             if (location.href.includes('about-education')) return
