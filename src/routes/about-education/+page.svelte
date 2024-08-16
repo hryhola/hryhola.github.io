@@ -1,9 +1,24 @@
 <svelte:head>
-    <title>Reflections on My Post-Secondary Education — Vladyslav Hryhola, Software Engineer & Private Entrepreneur</title>
+    <title>Reflections on My Higher Education Experience — Vladyslav Hryhola, Software Engineer & Private Entrepreneur</title>
+    <link rel="canonical" href="https://hryhola.github.io/about-education/" />
+    <meta name="description" content="The longer I spent obtaining formal education, the more I realized the degree of corruption in the institutions I was attending. The result of this experience can be expressed as a lack of respect towards people affiliated with this education system. Now, let's see why" />
+    <meta name="keywords" content="education,corruption,vpc nuft,lntu" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Reflections on My Higher Education Experience — Vladyslav Hryhola, Software Engineer & Private Entrepreneur" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="The longer I spent obtaining formal education, the more I realized the degree of corruption in the institutions I was attending. The result of this experience can be expressed as a lack of respect towards people affiliated with this education system. Now, let's see why." />
+    <meta property="og:image" content="https://hryhola.github.io/pictures/about-education/Reflections_on_My_Higher_Education_Experience.jpg" />
+    <meta property="og:url" content="https://hryhola.github.io/about-education/" />
+    <meta property="og:site_name" content="Vladyslav Hryhola" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@VladHryhola">
+    <meta name="twitter:title" content="Reflections on My Higher Education Experience — Vladyslav Hryhola, Software Engineer & Private Entrepreneur">
+    <meta name="twitter:description" content="The longer I spent obtaining formal education, the more I realized the degree of corruption in the institutions I was attending. The result of this experience can be expressed as a lack of respect towards people affiliated with this education system. Now, let's see why.">
+    <meta name="twitter:image" content="https://hryhola.github.io/pictures/about-education/Reflections_on_My_Higher_Education_Experience.jpg">
 </svelte:head>
 <article>
     <header>
-        <h1>Reflections on My Post-Secondary Education</h1>
+        <h1>Reflections on My Higher Education Experience</h1>
         <p class="about-article">Author: Vladyslav Hryhola | 16 August 2024</p>
     </header>
         <p>The longer I spent obtaining formal education, the more I realized the degree of corruption in the institutions I was attending. The result of this experience can be expressed as a lack of respect towards people affiliated with this education system. Now, let's see why.</p>
