@@ -16,6 +16,13 @@
     <meta name="twitter:description" content="The longer I spent obtaining formal education, the more I realized the degree of corruption in the institutions I was attending. The result of this experience can be expressed as a lack of respect towards people affiliated with this education system. Now, let's see why.">
     <meta name="twitter:image" content="https://hryhola.github.io/pictures/about-education/Reflections_on_My_Higher_Education_Experience.jpg">
 </svelte:head>
+<script>
+    import { onMount } from 'svelte'
+
+    onMount(() => {
+        document.documentElement.dataset.norefreshOnScroll = 'false';
+    })
+</script>
 <article>
     <header>
         <h1>Reflections on My Higher Education Experience</h1>

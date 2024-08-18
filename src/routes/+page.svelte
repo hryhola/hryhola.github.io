@@ -18,6 +18,8 @@
 
         scroller.initialize()
         scroller.scrollToHash()
+
+        document.documentElement.dataset.norefreshOnScroll = 'true';
     
         window.addEventListener('popstate', () => scroller.scrollToHash(true))
         window.addEventListener('resize', debounce(setVhVariable))

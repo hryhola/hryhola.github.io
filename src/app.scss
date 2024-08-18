@@ -7,6 +7,10 @@
     --fullHeight: calc(var(--vh, 1vh) * 100)
 }
 
+html[data-norefresh-on-scroll="true"] {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
 
 * {
     box-sizing: border-box;
