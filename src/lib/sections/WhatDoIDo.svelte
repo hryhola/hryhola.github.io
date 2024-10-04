@@ -102,8 +102,8 @@
             padding: 5% 0 5% 5%;
 
             &[data-is-light="true"] .light-rays{
-                width: 1800px;
-                height: 1800px;
+                width: max(200vh, 200vw);
+                height: max(200vh, 200vw);
                 img {
                     filter: saturate(0) contrast(2)
                 }
@@ -139,7 +139,7 @@
             background: radial-gradient(
                     circle,
                     white 0%,
-                    rgba(255, 255, 255, 0) 75%
+                    rgba(255, 255, 255, 0) 50%
                 );
 
             transition: 1s;
