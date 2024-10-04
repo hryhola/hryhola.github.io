@@ -24,6 +24,7 @@
 
 <nav>
     <ul>
+        <li><span class="marker">&gt;</span><a id="portfolizer" on:focus={focusHandler} href="https://portfolizer.vercel.app/hryhola" target="_blank">portfolio</a></li>
         <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="1" href="#what-do-I-do">what do I do</a></li>
         <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="2" href="#skill-set">skill set</a></li>
         <li><span class="marker">&gt;</span><a on:click={handleScroll} on:focus={focusHandler} data-scroll-index="3" href="#experience">experience</a></li>  
@@ -40,6 +41,12 @@
 
 <style lang="scss">
     @import '../../variables.scss';
+
+    #portfolizer {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
     nav {
         font-family: "Fira Code", monospace;

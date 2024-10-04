@@ -54,7 +54,7 @@
     }
 
     onMount(() => {
-        scaleRoyImg()
+        setTimeout(() => scaleRoyImg(), 100)
 
         window.addEventListener('resize', debounce(scaleRoyImg))
         window.addEventListener('orientationchange', debounce(scaleRoyImg))

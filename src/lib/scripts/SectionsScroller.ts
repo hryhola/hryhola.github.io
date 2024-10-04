@@ -170,6 +170,13 @@ export class SectionsScroller {
         document.dispatchEvent(new Event('section-scroll'))
 
         this.containerElement.setAttribute('style', 'top: calc(-1 * var(--vh) * ' + (this.currentSection * 100) + ')')
+    
+        // Reset focus onto the current section
+        const focusTarget = this.sectionsElements![this.currentSection]
+
+        focusTarget.tabIndex = 0
+        focusTarget.focus()
+        focusTarget.tabIndex = -1
     }
 
     scrollToSection(number: number, noPushState = false) {
