@@ -22,6 +22,7 @@
                 lqSrc="pictures/Vladyslav_Hryhola_LQ.jpg" 
                 hqSrc="pictures/Vladyslav_Hryhola.jpg" 
                 alt="Vladyslav Hryhola"
+                delay={2500}
             />
         </div>
     </main>

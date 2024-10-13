@@ -25,6 +25,7 @@
                     hqSrc="pictures/Vladyslav_Hryhola_Standing_Desk.png"
                     onHqLoaded={() => { hqImageLoaded = true }}
                     alt="Vladyslav works at a standing desk"
+                    delay={1000}
                 />
             </div>
 
