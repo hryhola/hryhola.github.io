@@ -38,7 +38,7 @@
     {/if}
 </div>
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     .experience-text {
         padding: 10px;

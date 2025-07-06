@@ -24,4 +24,16 @@
             <span itemprop="sameAs">https://astoundcommerce.com</span>
         </span>
     </span>
+    <span itemprop="hasOccupation" itemscope itemtype="http://schema.org/Role">
+        <span itemprop="startDate">Nov 2024</span> 
+        <span itemprop="endDate">Now</span>
+        <span itemprop="roleName">Partner</span>
+        <span itemprop="hasOccupation" itemscope itemtype="http://schema.org/Occupation">
+            <span itemprop="name">Front-End Developer</span>
+        </span>
+        <span itemscope itemtype="http://schema.org/Organization">
+            <span itemprop="name">64labs</span>
+            <span itemprop="url">https://www.64labs.com/</span>
+        </span>
+    </span>
 </span>

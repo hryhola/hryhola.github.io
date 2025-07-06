@@ -16,7 +16,7 @@
 </span>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     .title {
         position: relative;

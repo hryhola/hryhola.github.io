@@ -10,7 +10,7 @@
 <h2 class="header-normal">
     <span class="typing">
         <span itemprop="jobTitle">Software Engineer</span>.
-        <span itemprop="hasOccupation" itemscope itemtype="http://schema.org/Occupation"><span itemprop="name">Private entrepreneur</span><SkillsMicrodata /></span>.
+        <span itemprop="hasOccupation" itemscope itemtype="http://schema.org/Occupation"><span itemprop="name">Problem Solver</span><SkillsMicrodata /></span>.
     </span>
 </h2>
 <div class="header-small">
@@ -21,14 +21,14 @@
     </h2>
     <h2>
         <span class="typing typing-occupation">
-            <span>Private entrepreneur</span>.
+            <span>Problem Solver</span>.
         </span>
     </h2>
 </div>
 
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     h1 {
         font-family: "Gloock", serif;

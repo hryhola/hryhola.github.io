@@ -110,7 +110,7 @@
 </dd>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     @keyframes tooltip {
         from {

@@ -32,7 +32,7 @@
 </blockquote>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     .kant-quote {
         position: absolute;

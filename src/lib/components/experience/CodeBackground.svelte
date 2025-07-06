@@ -103,7 +103,7 @@
 </div>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     .code-background {
         cursor: pointer;

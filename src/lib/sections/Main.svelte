@@ -28,7 +28,7 @@
     </main>
 </section>
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
  
     main {
         padding-top: 103px;

@@ -29,21 +29,21 @@
     })
 </script>
 <svelte:head>
-    <title>Vladyslav Hryhola – Software Engineer & Private Entrepreneur</title>
+    <title>Vladyslav Hryhola – Software Engineer & Problem Solver</title>
     <link rel="canonical" href="https://hryhola.github.io/" />
-    <meta name="description" content="Who am I? A software engineer and developer. Discover my expertise in web development, data analytics, design and beyond. Interested in collaborating? Find my contact information below." />
+    <meta name="description" content="I'm a software engineer and developer with skills in web development, data analytics, and design. Want to collaborate? Find my contact info below." />
     <meta name="keywords" content="engineer,developer,programmer,frontender,backender,lntu" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Vladyslav Hryhola – Software Engineer & Private Entrepreneur" />
+    <meta property="og:title" content="Vladyslav Hryhola – Software Engineer & Problem Solver" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Experienced Software Engineer with a passion for web development. Proficient in JavaScript, React, and other technologies. Check out my portfolio and let's collaborate!" />
+    <meta property="og:description" content="I'm a software engineer and developer with skills in web development, data analytics, and design. Want to collaborate? Find my contact info below." />
     <meta property="og:image" content="https://hryhola.github.io/pictures/Vladyslav_Hryhola_OG.jpg" />
     <meta property="og:url" content="https://hryhola.github.io/" />
     <meta property="og:site_name" content="Vladyslav Hryhola" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@VladHryhola">
-    <meta name="twitter:title" content="Vladyslav Hryhola - Software Engineer & Private Entrepreneur">
-    <meta name="twitter:description" content="Experienced Software Engineer seeking new challenges. Proficient in JavaScript, React, and Node.js. Let's build something great together!">
+    <meta name="twitter:title" content="Vladyslav Hryhola - Software Engineer & Problem Solver">
+    <meta name="twitter:description" content="I'm a software engineer and developer with skills in web development, data analytics, and design. Want to collaborate? Find my contact info below.">
     <meta name="twitter:image" content="https://hryhola.github.io/pictures/Vladyslav_Hryhola_OG.jpg">
 </svelte:head>
 <SectionsPointer />

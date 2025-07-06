@@ -4,7 +4,7 @@
     import StudentExp from "$lib/components/experience/text/StudentExp.svelte"
     import AdMotionExp from "$lib/components/experience/text/AdMotionExp.svelte"
     import AstoundExp from "$lib/components/experience/text/AstoundExp.svelte"
-    import IndependentExp from "$lib/components/experience/text/IndependentExp.svelte"
+    import LabsExp from "$lib/components/experience/text/64labsExp.svelte"
     import ExpMicrodata from "$lib/components/experience/text/ExpMicrodata.svelte"
     import { scroller } from "$lib/scripts/SectionsScroller";
     import { replaceFrValue } from "$lib/scripts/helpers/style"
@@ -64,7 +64,7 @@
         'student-exp': 0,
         'adMotion-exp': 1,
         'astound-exp': 2,
-        'independent-exp': 3
+        'labs-exp': 3
     }
 
     const createExpander = (dataLabel: keyof typeof rowIndexMapping) => () => {
@@ -109,7 +109,7 @@
     const studentExpander = createExpander('student-exp')
     const adMotionExpander = createExpander('adMotion-exp')
     const astoundExpander = createExpander('astound-exp')
-    const independentExpander = createExpander('independent-exp')
+    const labsExpander = createExpander('labs-exp')
 
     const shrink = () => {
         expandStyle = 'transition: 0.5s;'
@@ -134,7 +134,7 @@
                 <ExpText position="Student" />
                 <StudentExp onBlur={shrink} onFocus={studentExpander} mobileOnly/>
             {:else}
-                <span class="slogan-beginning" class:fade-out={previewFadeOut}>I’ve coded things...</span>
+                <span class="slogan-beginning" class:fade-out={previewFadeOut}>I've coded things...</span>
             {/if}
         </Cell>
         <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={8} onClick={showChronology} justifyContent="start">
@@ -172,17 +172,17 @@
         </Cell>
 
         <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={20} onClick={showChronology} justifyContent="end">
-            {#if isChronology}<ExpText>Jul 2024 - Now</ExpText>{/if}
+            {#if isChronology}<ExpText>Nov 2024 - Now</ExpText>{/if}
         </Cell>
         <Cell mobilePreview buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={22} onClick={showChronology}>
             {#if isChronology}
-                <ExpText position="Independent Developer" where="Private Entrepreneur" noAt />
-                <IndependentExp onBlur={shrink} onFocus={independentExpander} mobileOnly/>
+                <ExpText position="Front-End Developer" where="64labs" />
+                <LabsExp onBlur={shrink} onFocus={labsExpander} mobileOnly/>
             {/if}
         </Cell>
         <Cell buttonRole={isPreview && !previewFadeOut} buttonAnimationDelay={24} onClick={showChronology} justifyContent="start">
             {#if isChronology}
-                <IndependentExp onBlur={shrink} onFocus={independentExpander} desktopOnly/>
+                <LabsExp onBlur={shrink} onFocus={labsExpander} desktopOnly/>
             {/if}
         </Cell>
 
@@ -193,7 +193,7 @@
     <ExpMicrodata />
 </section>
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
 
     .experience-content {
         height: 100%;

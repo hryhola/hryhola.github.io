@@ -45,7 +45,7 @@
 
                 <div class="article-text">
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That’s job of an <strong>engineer</strong>.</p>
+                    <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>That's job of an <strong>engineer</strong>.</p>
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <p tabindex="0" on:focus={focusHandler} on:mouseenter={letBeLight} on:mouseleave={letBeDark}>I seek for issues that should be <strong>fixed</strong>.</p>
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -62,7 +62,7 @@
 </section>
 
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
 
     #what-do-I-do {
         background: black;
