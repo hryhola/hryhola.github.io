@@ -1,18 +1,44 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<link rel="icon" href="%sveltekit.assets%/favicon16.ico" />
-		<link rel="icon" href="%sveltekit.assets%/favicon32.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="google-site-verification" content="IN-cBXhjvDv1YLjDv-h7ppDIt7zGl7ObEfIp8ESNaQQ" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">
-			%sveltekit.body%
-		</div>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+	<link rel="icon" href="%sveltekit.assets%/favicon16.ico" />
+	<link rel="icon" href="%sveltekit.assets%/favicon32.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="google-site-verification" content="IN-cBXhjvDv1YLjDv-h7ppDIt7zGl7ObEfIp8ESNaQQ" />
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+	<!-- Preconnect to external domains for better performance -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	<!-- Preload critical fonts to reduce layout shift -->
+	<link rel="preload" href="https://fonts.gstatic.com/s/firamono/v14/N0bX2SlFPv1weGeLZDtgJv7s.woff2" as="font"
+		type="font/woff2" crossorigin />
+	<link rel="preload" href="https://fonts.gstatic.com/s/firacode/v22/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Mw.woff2"
+		as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxK.woff2" as="font"
+		type="font/woff2" crossorigin />
+	<link rel="preload" href="https://fonts.gstatic.com/s/robotocondensed/v25/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQ.woff2"
+		as="font" type="font/woff2" crossorigin />
+
+	<!-- Preload critical images that appear above the fold -->
+	<link rel="preload" href="%sveltekit.assets%/pictures/Vladyslav_Hryhola_LQ.jpg" as="image" type="image/jpeg" />
+	<link rel="preload" href="%sveltekit.assets%/pictures/Vladyslav_Hryhola_Standing_Desk_LQ.jpg" as="image"
+		type="image/jpeg" />
+	<link rel="preload" href="%sveltekit.assets%/pictures/light_bulb.png" as="image" type="image/png" />
+
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">
+		%sveltekit.body%
+	</div>
+</body>
+
 </html>
