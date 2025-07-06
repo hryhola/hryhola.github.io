@@ -81,7 +81,7 @@
     </div>
 </section>
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
     @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
     #skill-set .container {

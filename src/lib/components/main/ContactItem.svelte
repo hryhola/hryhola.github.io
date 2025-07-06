@@ -56,7 +56,28 @@
                     tooltip.dataset.active = 'false'
                 }, 1000)
             })
-            .catch(e => console.error(e));
+            .catch(() => {
+                // Fallback: try to select text manually if clipboard API fails
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Show success feedback
+                    setTimeout(() => {
+                        tooltip.dataset.active = 'true'
+                    }, 100);
+                    tooltipHideDebounce = setTimeout(() => {
+                        tooltip.dataset.active = 'false'
+                    }, 1000)
+                } catch {
+                    // If both methods fail, do nothing silently
+                    // Users can still manually copy from the link
+                }
+            });
     }
 
     $: isActive = $isContactsExpanded && (isLogoHover || isTextHover || isLinkFocus || isButtonFocus)
@@ -89,7 +110,7 @@
 </dd>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     @keyframes tooltip {
         from {

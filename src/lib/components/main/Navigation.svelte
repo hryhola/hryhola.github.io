@@ -40,7 +40,7 @@
 </nav>
 
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
 
     #portfolizer {
         &:hover {

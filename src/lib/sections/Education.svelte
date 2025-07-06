@@ -62,7 +62,7 @@
     </div>
 </section>
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
 
     #education .container, #certificates .container {
         min-height: $min-section-height;

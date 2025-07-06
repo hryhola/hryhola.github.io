@@ -81,7 +81,7 @@
     {/if}
 </div>
 <style lang="scss">
-    @import '../../variables.scss';
+    @use '../../variables.scss' as *;
  
     .key {
         height: $piano-key-height;

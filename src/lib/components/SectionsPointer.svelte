@@ -51,7 +51,7 @@
     <div class="sections-pointer__bullet" data-section-id="cv"></div>
 </div>
 <style lang="scss">
-    @import '../variables.scss';
+    @use '../variables.scss' as *;
 
     .sections-pointer {
         z-index: 10000;

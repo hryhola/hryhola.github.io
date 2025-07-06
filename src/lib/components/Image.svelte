@@ -22,8 +22,6 @@
                 .then(res => res.blob())
                 .then(blob => {
                   src = URL.createObjectURL(blob); // Set the high-quality image
-  
-                  console.log('Loaded', hqSrc)
 
                   if (onHqLoaded) {
                     onHqLoaded(); // Call the callback if provided
@@ -31,8 +29,9 @@
   
                   observer.disconnect(); // Stop observing after HQ image is loaded
                 })
-                .catch(error => {
-                  console.error('Error loading high-quality image:', error);
+                .catch(() => {
+                  // If high-quality image fails to load, keep using the low-quality image
+                  // This provides graceful degradation for users
                 });
             }, delay);
           }
@@ -40,21 +39,15 @@
       });
   
       if (imageRef) {
-        observer.observe(imageRef); // Start observing the image
+        observer.observe(imageRef);
       }
   
-      // Cleanup the observer on component destruction
       return () => {
-        if (imageRef) {
-          observer.disconnect();
-        }
+        observer.disconnect();
       };
     });
-  
-    // Ensure initial low-quality image is set
-    $: src = lqSrc;
-  </script>
-  
+</script>
+
   <!-- Render the image and bind it to the imageRef for observing -->
   <img src={src} class={className} alt={alt} bind:this={imageRef} />
   
